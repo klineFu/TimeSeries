@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 第三章作业 | A Minimal Book Example</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 第三章作业 | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 第三章作业 | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="思想先进的猫猫" />
+
+
+<meta name="date" content="2023-05-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第二章作业.html"/>
+<link rel="next" href="第四章作业.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="第一章作业.html"><a href="第一章作业.html"><i class="fa fa-check"></i><b>1</b> 第一章作业</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="第一章作业.html"><a href="第一章作业.html#复现课本图像"><i class="fa fa-check"></i><b>1.1</b> 复现课本图像</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="第一章作业.html"><a href="第一章作业.html#强生公司季度收益序列"><i class="fa fa-check"></i><b>1.1.1</b> 强生公司季度收益序列</a></li>
+<li class="chapter" data-level="1.1.2" data-path="第一章作业.html"><a href="第一章作业.html#全球变暖和气候变化"><i class="fa fa-check"></i><b>1.1.2</b> 全球变暖和气候变化</a></li>
+<li class="chapter" data-level="1.1.3" data-path="第一章作业.html"><a href="第一章作业.html#道琼斯工业平均指数"><i class="fa fa-check"></i><b>1.1.3</b> 道琼斯工业平均指数</a></li>
+<li class="chapter" data-level="1.1.4" data-path="第一章作业.html"><a href="第一章作业.html#美国gdp对数增长率与实际增长率"><i class="fa fa-check"></i><b>1.1.4</b> 美国GDP对数增长率与实际增长率</a></li>
+<li class="chapter" data-level="1.1.5" data-path="第一章作业.html"><a href="第一章作业.html#厄尔尼诺南方涛动enso"><i class="fa fa-check"></i><b>1.1.5</b> 厄尔尼诺—南方涛动（ENSO）</a></li>
+<li class="chapter" data-level="1.1.6" data-path="第一章作业.html"><a href="第一章作业.html#捕食者与猎物的互动"><i class="fa fa-check"></i><b>1.1.6</b> 捕食者与猎物的互动</a></li>
+<li class="chapter" data-level="1.1.7" data-path="第一章作业.html"><a href="第一章作业.html#fmri图像"><i class="fa fa-check"></i><b>1.1.7</b> fMRI图像</a></li>
+<li class="chapter" data-level="1.1.8" data-path="第一章作业.html"><a href="第一章作业.html#滤波序列"><i class="fa fa-check"></i><b>1.1.8</b> 滤波序列</a></li>
+<li class="chapter" data-level="1.1.9" data-path="第一章作业.html"><a href="第一章作业.html#自回归模型"><i class="fa fa-check"></i><b>1.1.9</b> 自回归模型</a></li>
+<li class="chapter" data-level="1.1.10" data-path="第一章作业.html"><a href="第一章作业.html#带漂移项的随机游走序列"><i class="fa fa-check"></i><b>1.1.10</b> 带漂移项的随机游走序列</a></li>
+<li class="chapter" data-level="1.1.11" data-path="第一章作业.html"><a href="第一章作业.html#信号与噪声"><i class="fa fa-check"></i><b>1.1.11</b> 信号与噪声</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="第一章作业.html"><a href="第一章作业.html#随机数的产生"><i class="fa fa-check"></i><b>1.2</b> 随机数的产生</a></li>
+<li class="chapter" data-level="1.3" data-path="第一章作业.html"><a href="第一章作业.html#课后习题"><i class="fa fa-check"></i><b>1.3</b> 课后习题</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="第一章作业.html"><a href="第一章作业.html#习题1.1"><i class="fa fa-check"></i><b>1.3.1</b> 习题1.1</a></li>
+<li class="chapter" data-level="1.3.2" data-path="第一章作业.html"><a href="第一章作业.html#习题1.2"><i class="fa fa-check"></i><b>1.3.2</b> 习题1.2</a></li>
+<li class="chapter" data-level="1.3.3" data-path="第一章作业.html"><a href="第一章作业.html#习题1.3"><i class="fa fa-check"></i><b>1.3.3</b> 习题1.3</a></li>
+<li class="chapter" data-level="1.3.4" data-path="第一章作业.html"><a href="第一章作业.html#习题1.4"><i class="fa fa-check"></i><b>1.3.4</b> 习题1.4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章作业.html"><a href="第二章作业.html"><i class="fa fa-check"></i><b>2</b> 第二章作业</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="第二章作业.html"><a href="第二章作业.html#load-package"><i class="fa fa-check"></i><b>2.1</b> Load package</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章作业.html"><a href="第二章作业.html#高斯白噪声序列"><i class="fa fa-check"></i><b>2.2</b> 2.11 高斯白噪声序列</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="第二章作业.html"><a href="第二章作业.html#a"><i class="fa fa-check"></i><b>2.2.1</b> 2.11 (a)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第二章作业.html"><a href="第二章作业.html#b"><i class="fa fa-check"></i><b>2.2.2</b> 2.11 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="第二章作业.html"><a href="第二章作业.html#移动平均序列"><i class="fa fa-check"></i><b>2.3</b> 2.12 移动平均序列</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章作业.html"><a href="第二章作业.html#a-1"><i class="fa fa-check"></i><b>2.3.1</b> 2.12 (a)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章作业.html"><a href="第二章作业.html#b-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.12 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="第二章作业.html"><a href="第二章作业.html#ar模型"><i class="fa fa-check"></i><b>2.4</b> 2.13 AR模型</a></li>
+<li class="chapter" data-level="2.5" data-path="第二章作业.html"><a href="第二章作业.html#信号加噪声模型"><i class="fa fa-check"></i><b>2.5</b> 2.14 信号加噪声模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章作业.html"><a href="第三章作业.html"><i class="fa fa-check"></i><b>3</b> 第三章作业</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="第三章作业.html"><a href="第三章作业.html#libs"><i class="fa fa-check"></i><b>3.1</b> Libs</a></li>
+<li class="chapter" data-level="3.2" data-path="第三章作业.html"><a href="第三章作业.html#结构回归模型"><i class="fa fa-check"></i><b>3.2</b> 3.1 结构回归模型</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章作业.html"><a href="第三章作业.html#a-2"><i class="fa fa-check"></i><b>3.2.1</b> 3.1 (a)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="第三章作业.html"><a href="第三章作业.html#b-2"><i class="fa fa-check"></i><b>3.2.2</b> 3.1 (b)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="第三章作业.html"><a href="第三章作业.html#c"><i class="fa fa-check"></i><b>3.2.3</b> 3.1 (c)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="第三章作业.html"><a href="第三章作业.html#d"><i class="fa fa-check"></i><b>3.2.4</b> 3.1 (d)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="第三章作业.html"><a href="第三章作业.html#e"><i class="fa fa-check"></i><b>3.2.5</b> 3.1 (e)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章作业.html"><a href="第三章作业.html#检验的死亡率数据"><i class="fa fa-check"></i><b>3.3</b> 3.2 检验的死亡率数据</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章作业.html"><a href="第三章作业.html#a-3"><i class="fa fa-check"></i><b>3.3.1</b> 3.2 (a)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="第三章作业.html"><a href="第三章作业.html#b-3"><i class="fa fa-check"></i><b>3.3.2</b> 3.2 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章作业.html"><a href="第三章作业.html#随机游走和趋势平稳过程之间的区别"><i class="fa fa-check"></i><b>3.4</b> 3.3 随机游走和趋势平稳过程之间的区别</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章作业.html"><a href="第三章作业.html#a-4"><i class="fa fa-check"></i><b>3.4.1</b> 3.3 (a)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="第三章作业.html"><a href="第三章作业.html#b-4"><i class="fa fa-check"></i><b>3.4.2</b> 3.3 (b)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="第三章作业.html"><a href="第三章作业.html#c-1"><i class="fa fa-check"></i><b>3.4.3</b> 3.3 (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章作业.html"><a href="第三章作业.html#线性趋势组成的过程"><i class="fa fa-check"></i><b>3.5</b> 3.4 线性趋势组成的过程</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章作业.html"><a href="第三章作业.html#a-5"><i class="fa fa-check"></i><b>3.5.1</b> 3.4 (a)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="第三章作业.html"><a href="第三章作业.html#b-5"><i class="fa fa-check"></i><b>3.5.2</b> 3.4 (b)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="第三章作业.html"><a href="第三章作业.html#c-2"><i class="fa fa-check"></i><b>3.5.3</b> 3.4 (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="第三章作业.html"><a href="第三章作业.html#平稳性证明"><i class="fa fa-check"></i><b>3.6</b> 3.5 平稳性证明</a></li>
+<li class="chapter" data-level="3.7" data-path="第三章作业.html"><a href="第三章作业.html#冰川纹层数据"><i class="fa fa-check"></i><b>3.7</b> 3.6 冰川纹层数据</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="第三章作业.html"><a href="第三章作业.html#a-6"><i class="fa fa-check"></i><b>3.7.1</b> 3.6 (a)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="第三章作业.html"><a href="第三章作业.html#b-6"><i class="fa fa-check"></i><b>3.7.2</b> 3.6 (b)</a></li>
+<li class="chapter" data-level="3.7.3" data-path="第三章作业.html"><a href="第三章作业.html#c-3"><i class="fa fa-check"></i><b>3.7.3</b> 3.6 (c)</a></li>
+<li class="chapter" data-level="3.7.4" data-path="第三章作业.html"><a href="第三章作业.html#d-1"><i class="fa fa-check"></i><b>3.7.4</b> 3.6 (d)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="第三章作业.html"><a href="第三章作业.html#全球温度序列"><i class="fa fa-check"></i><b>3.8</b> 3.7 全球温度序列</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="第三章作业.html"><a href="第三章作业.html#移动平均平滑器"><i class="fa fa-check"></i><b>3.8.1</b> 3.7 移动平均平滑器</a></li>
+<li class="chapter" data-level="3.8.2" data-path="第三章作业.html"><a href="第三章作业.html#核平滑"><i class="fa fa-check"></i><b>3.8.2</b> 3.7 核平滑</a></li>
+<li class="chapter" data-level="3.8.3" data-path="第三章作业.html"><a href="第三章作业.html#lowess"><i class="fa fa-check"></i><b>3.8.3</b> 3.7 lowess</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="第三章作业.html"><a href="第三章作业.html#厄尔尼诺现象"><i class="fa fa-check"></i><b>3.9</b> 3.8 厄尔尼诺现象</a></li>
+<li class="chapter" data-level="3.10" data-path="第三章作业.html"><a href="第三章作业.html#强生公司数据序列"><i class="fa fa-check"></i><b>3.10</b> 3.9 强生公司数据序列</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章作业.html"><a href="第四章作业.html"><i class="fa fa-check"></i><b>4</b> 第四章作业</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="第四章作业.html"><a href="第四章作业.html#libs-1"><i class="fa fa-check"></i><b>4.1</b> Libs</a></li>
+<li class="chapter" data-level="4.2" data-path="第四章作业.html"><a href="第四章作业.html#ma1的acf"><i class="fa fa-check"></i><b>4.2</b> 4.1 MA(1)的ACF</a></li>
+<li class="chapter" data-level="4.3" data-path="第四章作业.html"><a href="第四章作业.html#白噪声过程"><i class="fa fa-check"></i><b>4.3</b> 4.2 白噪声过程</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="第四章作业.html"><a href="第四章作业.html#a-7"><i class="fa fa-check"></i><b>4.3.1</b> (a)</a></li>
+<li class="chapter" data-level="4.3.2" data-path="第四章作业.html"><a href="第四章作业.html#b-7"><i class="fa fa-check"></i><b>4.3.2</b> (b)</a></li>
+<li class="chapter" data-level="4.3.3" data-path="第四章作业.html"><a href="第四章作业.html#c-4"><i class="fa fa-check"></i><b>4.3.3</b> (c)</a></li>
+<li class="chapter" data-level="4.3.4" data-path="第四章作业.html"><a href="第四章作业.html#d-2"><i class="fa fa-check"></i><b>4.3.4</b> (d)</a></li>
+<li class="chapter" data-level="4.3.5" data-path="第四章作业.html"><a href="第四章作业.html#e-1"><i class="fa fa-check"></i><b>4.3.5</b> (e)</a></li>
+<li class="chapter" data-level="4.3.6" data-path="第四章作业.html"><a href="第四章作业.html#f"><i class="fa fa-check"></i><b>4.3.6</b> (f)</a></li>
+<li class="chapter" data-level="4.3.7" data-path="第四章作业.html"><a href="第四章作业.html#g"><i class="fa fa-check"></i><b>4.3.7</b> (g)</a></li>
+<li class="chapter" data-level="4.3.8" data-path="第四章作业.html"><a href="第四章作业.html#h"><i class="fa fa-check"></i><b>4.3.8</b> (h)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="第四章作业.html"><a href="第四章作业.html#参数冗余的讨论"><i class="fa fa-check"></i><b>4.4</b> 4.3 参数冗余的讨论</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="第四章作业.html"><a href="第四章作业.html#a-8"><i class="fa fa-check"></i><b>4.4.1</b> (a)</a></li>
+<li class="chapter" data-level="4.4.2" data-path="第四章作业.html"><a href="第四章作业.html#b-8"><i class="fa fa-check"></i><b>4.4.2</b> (b)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="第四章作业.html"><a href="第四章作业.html#c-5"><i class="fa fa-check"></i><b>4.4.3</b> (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="第四章作业.html"><a href="第四章作业.html#三个arma模型"><i class="fa fa-check"></i><b>4.5</b> 4.4 三个ARMA模型</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="第四章作业.html"><a href="第四章作业.html#a-9"><i class="fa fa-check"></i><b>4.5.1</b> (a)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="第四章作业.html"><a href="第四章作业.html#b-9"><i class="fa fa-check"></i><b>4.5.2</b> (b)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="第四章作业.html"><a href="第四章作业.html#c-6"><i class="fa fa-check"></i><b>4.5.3</b> (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="第四章作业.html"><a href="第四章作业.html#cmort数据分析"><i class="fa fa-check"></i><b>4.6</b> 4.5 cmort数据分析</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="第四章作业.html"><a href="第四章作业.html#a-10"><i class="fa fa-check"></i><b>4.6.1</b> (a)</a></li>
+<li class="chapter" data-level="4.6.2" data-path="第四章作业.html"><a href="第四章作业.html#b-10"><i class="fa fa-check"></i><b>4.6.2</b> (b)</a></li>
+<li class="chapter" data-level="4.6.3" data-path="第四章作业.html"><a href="第四章作业.html#c-7"><i class="fa fa-check"></i><b>4.6.3</b> (c)</a></li>
+<li class="chapter" data-level="4.6.4" data-path="第四章作业.html"><a href="第四章作业.html#d-3"><i class="fa fa-check"></i><b>4.6.4</b> (d)</a></li>
+<li class="chapter" data-level="4.6.5" data-path="第四章作业.html"><a href="第四章作业.html#e-2"><i class="fa fa-check"></i><b>4.6.5</b> (e)</a></li>
+<li class="chapter" data-level="4.6.6" data-path="第四章作业.html"><a href="第四章作业.html#f-1"><i class="fa fa-check"></i><b>4.6.6</b> (f)</a></li>
+<li class="chapter" data-level="4.6.7" data-path="第四章作业.html"><a href="第四章作业.html#g-1"><i class="fa fa-check"></i><b>4.6.7</b> (g)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="第四章作业.html"><a href="第四章作业.html#模型预测与mspe"><i class="fa fa-check"></i><b>4.7</b> 4.6 模型预测与MSPE</a></li>
+<li class="chapter" data-level="4.8" data-path="第四章作业.html"><a href="第四章作业.html#参数估计"><i class="fa fa-check"></i><b>4.8</b> 4.7 参数估计</a></li>
+<li class="chapter" data-level="4.9" data-path="第四章作业.html"><a href="第四章作业.html#参数的mle"><i class="fa fa-check"></i><b>4.9</b> 4.8 参数的MLE</a></li>
+<li class="chapter" data-level="4.10" data-path="第四章作业.html"><a href="第四章作业.html#ar1的高斯-牛顿算法"><i class="fa fa-check"></i><b>4.10</b> 4.9 AR(1)的高斯-牛顿算法</a></li>
+<li class="chapter" data-level="4.11" data-path="第四章作业.html"><a href="第四章作业.html#预测误差"><i class="fa fa-check"></i><b>4.11</b> 4.10 预测误差</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第三章作业" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 第三章作业<a href="第三章作业.html#第三章作业" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="libs" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Libs<a href="第三章作业.html#libs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="第三章作业.html#cb39-1" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(astsa,tidyverse,ggplot2,reshape2)</span></code></pre></div>
+</div>
+<div id="结构回归模型" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 3.1 结构回归模型<a href="第三章作业.html#结构回归模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-2" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 3.1 (a)<a href="第三章作业.html#a-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>拟合回归模型：</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="第三章作业.html#cb40-1" tabindex="-1"></a>trend <span class="ot">=</span> <span class="fu">time</span>(jj) <span class="sc">-</span> <span class="dv">1970</span></span>
+<span id="cb40-2"><a href="第三章作业.html#cb40-2" tabindex="-1"></a>Q <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">cycle</span>(jj))</span>
+<span id="cb40-3"><a href="第三章作业.html#cb40-3" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(jj)<span class="sc">~</span><span class="dv">0</span><span class="sc">+</span>trend<span class="sc">+</span>Q,<span class="at">na.action =</span> <span class="cn">NULL</span>)</span>
+<span id="cb40-4"><a href="第三章作业.html#cb40-4" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(reg))</span></code></pre></div>
+<pre><code>##    trend Q1 Q2 Q3 Q4
+## 1 -10.00  1  0  0  0
+## 2  -9.75  0  1  0  0
+## 3  -9.50  0  0  1  0
+## 4  -9.25  0  0  0  1
+## 5  -9.00  1  0  0  0
+## 6  -8.75  0  1  0  0</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="第三章作业.html#cb42-1" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(jj) ~ 0 + trend + Q, na.action = NULL)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.29318 -0.09062 -0.01180  0.08460  0.27644 
+## 
+## Coefficients:
+##       Estimate Std. Error t value Pr(&gt;|t|)    
+## trend 0.167172   0.002259   74.00   &lt;2e-16 ***
+## Q1    1.052793   0.027359   38.48   &lt;2e-16 ***
+## Q2    1.080916   0.027365   39.50   &lt;2e-16 ***
+## Q3    1.151024   0.027383   42.03   &lt;2e-16 ***
+## Q4    0.882266   0.027412   32.19   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1254 on 79 degrees of freedom
+## Multiple R-squared:  0.9935, Adjusted R-squared:  0.9931 
+## F-statistic:  2407 on 5 and 79 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="b-2" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> 3.1 (b)<a href="第三章作业.html#b-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果模型正确，根据summary()得到的结果平均每股对数收益率的年增长的估计值是0.167172。</p>
+</div>
+<div id="c" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> 3.1 (c)<a href="第三章作业.html#c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果模型正确，平均对数收益率从第三季度到第四季度会减少，根据summary()得到的结果，减少的百分比是Q4-Q3=0.268758</p>
+</div>
+<div id="d" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> 3.1 (d)<a href="第三章作业.html#d" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果在(a)中的模型中包含截距项，第四季度分量将变成负的。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="第三章作业.html#cb44-1" tabindex="-1"></a>reg2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(jj)<span class="sc">~</span><span class="dv">0</span><span class="sc">+</span>trend<span class="sc">+</span>Q<span class="sc">+</span><span class="dv">1</span>,<span class="at">na.action =</span> <span class="cn">NULL</span>)</span>
+<span id="cb44-2"><a href="第三章作业.html#cb44-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(reg2))</span></code></pre></div>
+<pre><code>##   (Intercept)  trend Q2 Q3 Q4
+## 1           1 -10.00  0  0  0
+## 2           1  -9.75  1  0  0
+## 3           1  -9.50  0  1  0
+## 4           1  -9.25  0  0  1
+## 5           1  -9.00  0  0  0
+## 6           1  -8.75  1  0  0</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="第三章作业.html#cb46-1" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(jj) ~ 0 + trend + Q + 1, na.action = NULL)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.29318 -0.09062 -0.01180  0.08460  0.27644 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.052793   0.027359  38.480  &lt; 2e-16 ***
+## trend        0.167172   0.002259  73.999  &lt; 2e-16 ***
+## Q2           0.028123   0.038696   0.727   0.4695    
+## Q3           0.098231   0.038708   2.538   0.0131 *  
+## Q4          -0.170527   0.038729  -4.403 3.31e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1254 on 79 degrees of freedom
+## Multiple R-squared:  0.9859, Adjusted R-squared:  0.9852 
+## F-statistic:  1379 on 4 and 79 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="e" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> 3.1 (e)<a href="第三章作业.html#e" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>绘制数据<span class="math inline">\(x_t\)</span>并在图表上叠加拟合值</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="第三章作业.html#cb48-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Time=</span><span class="fu">c</span>(<span class="fu">time</span>(<span class="fu">log</span>(jj))),<span class="at">logjj=</span><span class="fu">c</span>(<span class="fu">log</span>(jj)),<span class="at">fit=</span>reg<span class="sc">$</span>fitted.values)</span>
+<span id="cb48-2"><a href="第三章作业.html#cb48-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">melt</span>(a,<span class="at">id=</span><span class="st">&quot;Time&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: attributes are not identical across measure variables; they will be
+## dropped</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="第三章作业.html#cb50-1" tabindex="-1"></a>p_line<span class="ot">=</span><span class="fu">ggplot</span>(<span class="fu">group_by</span>(a),<span class="fu">aes</span>(<span class="at">x=</span>Time,<span class="at">y=</span>value,<span class="at">group=</span>variable,<span class="at">col=</span>variable))<span class="sc">+</span></span>
+<span id="cb50-2"><a href="第三章作业.html#cb50-2" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb50-3"><a href="第三章作业.html#cb50-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Time&quot;</span>)<span class="sc">+</span></span>
+<span id="cb50-4"><a href="第三章作业.html#cb50-4" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;log(QEPS)&quot;</span>)</span>
+<span id="cb50-5"><a href="第三章作业.html#cb50-5" tabindex="-1"></a>p_line</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>检查残差，首先观察Q-Q图</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="第三章作业.html#cb51-1" tabindex="-1"></a><span class="fu">tsplot</span>(reg<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="第三章作业.html#cb52-1" tabindex="-1"></a><span class="fu">tibble</span>(reg<span class="sc">$</span>residuals) <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="第三章作业.html#cb52-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> reg<span class="sc">$</span>residuals)) <span class="sc">+</span></span>
+<span id="cb52-3"><a href="第三章作业.html#cb52-3" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>()</span></code></pre></div>
+<pre><code>## Don&#39;t know how to automatically pick scale for object of type &lt;ts&gt;.
+## Defaulting to continuous.
+## Don&#39;t know how to automatically pick scale for object of type &lt;ts&gt;.
+## Defaulting to continuous.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-2.png" width="672" /></p>
+<p>使用Box-Ljung 检验来检测残差是否是白噪声</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="第三章作业.html#cb54-1" tabindex="-1"></a><span class="co">#Box-Ljung 检验</span></span>
+<span id="cb54-2"><a href="第三章作业.html#cb54-2" tabindex="-1"></a><span class="fu">Box.test</span>(reg<span class="sc">$</span>residuals,<span class="at">type=</span><span class="st">&#39;Ljung&#39;</span>,<span class="at">lag=</span><span class="fu">log</span>(<span class="fu">length</span>(reg<span class="sc">$</span>residuals)))</span></code></pre></div>
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  reg$residuals
+## X-squared = 54.362, df = 4.4308, p-value = 8.166e-11</code></pre>
+<p>由于pvalue小于0.5，因此残差不是白噪声。</p>
+</div>
+</div>
+<div id="检验的死亡率数据" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 3.2 检验的死亡率数据<a href="第三章作业.html#检验的死亡率数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-3" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 3.2 (a)<a href="第三章作业.html#a-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在式 (3.17) 中为回归添加另一个分量，该分量考虑了四周前的颗粒物数量。将<span class="math inline">\(P_{t-4}\)</span> 添加到式 (3.17) 的回归中</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="第三章作业.html#cb56-1" tabindex="-1"></a>temp <span class="ot">=</span> tempr<span class="sc">-</span><span class="fu">mean</span>(tempr)</span>
+<span id="cb56-2"><a href="第三章作业.html#cb56-2" tabindex="-1"></a>ded <span class="ot">=</span> <span class="fu">ts.intersect</span>(cmort,<span class="at">trend=</span><span class="fu">time</span>(cmort),temp,<span class="at">temp2=</span>temp<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb56-3"><a href="第三章作业.html#cb56-3" tabindex="-1"></a>                   part,<span class="at">partL4=</span>stats<span class="sc">::</span><span class="fu">lag</span>(part,<span class="sc">-</span><span class="dv">4</span>))</span>
+<span id="cb56-4"><a href="第三章作业.html#cb56-4" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">length</span>(ded)<span class="sc">/</span><span class="dv">6</span></span>
+<span id="cb56-5"><a href="第三章作业.html#cb56-5" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">1</span>]<span class="sc">~</span> ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">2</span>] <span class="sc">+</span> ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">3</span>] <span class="sc">+</span> ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">4</span>] <span class="sc">+</span> ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">5</span>] </span>
+<span id="cb56-6"><a href="第三章作业.html#cb56-6" tabindex="-1"></a>         <span class="sc">+</span> ded[<span class="dv">1</span><span class="sc">:</span>n,<span class="dv">6</span>], <span class="at">na.action=</span><span class="cn">NULL</span>)</span>
+<span id="cb56-7"><a href="第三章作业.html#cb56-7" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ded[1:n, 1] ~ ded[1:n, 2] + ded[1:n, 3] + ded[1:n, 
+##     4] + ded[1:n, 5] + ded[1:n, 6], na.action = NULL)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -18.228  -4.314  -0.614   3.713  27.800 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  2.808e+03  1.989e+02  14.123  &lt; 2e-16 ***
+## ded[1:n, 2] -1.385e+00  1.006e-01 -13.765  &lt; 2e-16 ***
+## ded[1:n, 3] -4.058e-01  3.528e-02 -11.503  &lt; 2e-16 ***
+## ded[1:n, 4]  2.155e-02  2.803e-03   7.688 8.02e-14 ***
+## ded[1:n, 5]  2.029e-01  2.266e-02   8.954  &lt; 2e-16 ***
+## ded[1:n, 6]  1.030e-01  2.485e-02   4.147 3.96e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.287 on 498 degrees of freedom
+## Multiple R-squared:  0.608,  Adjusted R-squared:  0.6041 
+## F-statistic: 154.5 on 5 and 498 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>得到的回归结果如上。</p>
+</div>
+<div id="b-3" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> 3.2 (b)<a href="第三章作业.html#b-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>计算AIC和BIC</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="第三章作业.html#cb58-1" tabindex="-1"></a>num<span class="ot">=</span><span class="fu">length</span>(cmort)</span>
+<span id="cb58-2"><a href="第三章作业.html#cb58-2" tabindex="-1"></a><span class="fu">AIC</span>(fit)<span class="sc">/</span>num<span class="sc">-</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">*</span>pi)</span></code></pre></div>
+<pre><code>## [1] 4.641492</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="第三章作业.html#cb60-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)<span class="sc">/</span>num<span class="sc">-</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">*</span>pi)</span></code></pre></div>
+<pre><code>## [1] 4.699677</code></pre>
+<p>与例 3.5 中最终模型对比可以发现AIC,BIC的值更小了。因此，(a)中模型是对3.5 中最终模型的改进。</p>
+</div>
+</div>
+<div id="随机游走和趋势平稳过程之间的区别" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> 3.3 随机游走和趋势平稳过程之间的区别<a href="第三章作业.html#随机游走和趋势平稳过程之间的区别" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-4" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> 3.3 (a)<a href="第三章作业.html#a-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>生成四个带漂移项的随机游走序列</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="第三章作业.html#cb62-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## Warning in par(mrow = c(2, 2)): &quot;mrow&quot; is not a graphical parameter</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="第三章作业.html#cb64-1" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb64-2"><a href="第三章作业.html#cb64-2" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">ts</span>(<span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>,.<span class="dv">01</span>,<span class="dv">1</span>)))</span>
+<span id="cb64-3"><a href="第三章作业.html#cb64-3" tabindex="-1"></a>    regx<span class="ot">=</span><span class="fu">lm</span>(x<span class="sc">~</span><span class="dv">0</span><span class="sc">+</span><span class="fu">time</span>(x),<span class="at">na.action =</span> <span class="cn">NULL</span>)</span>
+<span id="cb64-4"><a href="第三章作业.html#cb64-4" tabindex="-1"></a>    <span class="fu">tsplot</span>(x,<span class="at">ylab =</span> <span class="st">&quot;Random Walk w Drift&quot;</span>,<span class="at">col=</span><span class="st">&quot;darkgray&quot;</span>)</span>
+<span id="cb64-5"><a href="第三章作业.html#cb64-5" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,.<span class="dv">01</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb64-6"><a href="第三章作业.html#cb64-6" tabindex="-1"></a>    <span class="fu">abline</span>(regx,<span class="fu">col</span>(<span class="dv">4</span>))</span>
+<span id="cb64-7"><a href="第三章作业.html#cb64-7" tabindex="-1"></a>  }</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-37-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-37-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-37-4.png" width="672" /></p>
+</div>
+<div id="b-4" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 3.3 (b)<a href="第三章作业.html#b-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>生成四个序列，长度 n = 500，它们是线性趋势加上噪声</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="第三章作业.html#cb65-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## Warning in par(mrow = c(2, 2)): &quot;mrow&quot; is not a graphical parameter</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="第三章作业.html#cb67-1" tabindex="-1"></a>t<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">500</span></span>
+<span id="cb67-2"><a href="第三章作业.html#cb67-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb67-3"><a href="第三章作业.html#cb67-3" tabindex="-1"></a>  y <span class="ot">=</span> <span class="fu">ts</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>,.<span class="dv">01</span>,<span class="dv">1</span>)<span class="sc">+</span><span class="fl">0.01</span><span class="sc">*</span>t)</span>
+<span id="cb67-4"><a href="第三章作业.html#cb67-4" tabindex="-1"></a>  regx<span class="ot">=</span><span class="fu">lm</span>(y<span class="sc">~</span><span class="dv">0</span><span class="sc">+</span><span class="fu">time</span>(y),<span class="at">na.action =</span> <span class="cn">NULL</span>)</span>
+<span id="cb67-5"><a href="第三章作业.html#cb67-5" tabindex="-1"></a>  <span class="fu">tsplot</span>(y,<span class="at">ylab =</span> <span class="st">&quot;Random Walk w Drift&quot;</span>,<span class="at">col=</span><span class="st">&quot;darkgray&quot;</span>)</span>
+<span id="cb67-6"><a href="第三章作业.html#cb67-6" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,.<span class="dv">01</span>,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb67-7"><a href="第三章作业.html#cb67-7" tabindex="-1"></a>  <span class="fu">abline</span>(regx,<span class="fu">col</span>(<span class="dv">4</span>))</span>
+<span id="cb67-8"><a href="第三章作业.html#cb67-8" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-38-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-38-4.png" width="672" /></p>
+</div>
+<div id="c-1" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> 3.3 (c)<a href="第三章作业.html#c-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>(a)中得到的四个结果之间存在较大的差异，而(b)中得到的结果尽管存在差异，但是差异很小，并且(b)中得到的图像总是具有相同的趋势。这是因为<span class="math inline">\(0.01t\)</span>在起作用。</p>
+</div>
+</div>
+<div id="线性趋势组成的过程" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> 3.4 线性趋势组成的过程<a href="第三章作业.html#线性趋势组成的过程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-5" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> 3.4 (a)<a href="第三章作业.html#a-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>证明 <span class="math inline">\(x_t\)</span> 是非平稳的。
+<span class="math display">\[\begin{align}
+    \mu_{x_t}&amp;=E[x_{t}]\notag\\
+    &amp;=\beta_{0}+\beta_{1}t\notag
+\end{align}\]</span>
+由于均值函数和时间有关，因此不是平稳的。</p>
+</div>
+<div id="b-5" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> 3.4 (b)<a href="第三章作业.html#b-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>通过找出其均值和自协方差函数证明一阶差分序列是平稳的。
+<span class="math display">\[\begin{align}
+    \nabla x_{t}&amp;= x_{t}-x_{t-1}\notag\\
+    &amp;=\beta_{0}+\beta_{1}t-\beta_{0}-\beta_{1}(t-1)-w_{t-1}\notag\\
+    &amp;=\beta_{1}+w_{t}-w_{t-1}\notag
+\end{align}\]</span>
+其均值和自协方差函数分别如下：
+<span class="math display">\[\begin{align}
+    \mu_{\nabla x_{t}}&amp;=E[\nabla x_{t}]=\beta_{1}\notag\\
+    \gamma(h)&amp;=cov(\beta_{1}+w_{t}-w_{t-1},\beta_{1}+w_{t+h}-w_{t+h-1})\notag\\
+    &amp;=\left\{
+    \begin{array}{rcl}
+        &amp;2\sigma_{w}^{2}              &amp; {h=0}\\
+        &amp;-\sigma_{w}^{2}           &amp; {|h|=1}\\
+        &amp;0           &amp; {2\leq |h|}\notag
+\end{array} \right.
+\end{align}\]</span>
+由于均值函数与t无关，并且自协方差函数仅与h有关，所以该序列平稳。</p>
+</div>
+<div id="c-2" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> 3.4 (c)<a href="第三章作业.html#c-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>果用一般的平稳过程（即 <span class="math inline">\(y_t\)</span>）代替 <span class="math inline">\(w_t\)</span>，
+<span class="math display">\[\begin{align}
+    \nabla x_{t}&amp;= \beta_{1}+y_{t}-y_{t-1}\notag
+\end{align}\]</span>
+其均值和自协方差函数分别如下：
+<span class="math display">\[\begin{align}
+    \mu_{\nabla x_{t}}&amp;=E[\nabla x_{t}]=\beta_{1}\notag\\
+    \gamma(h)&amp;=cov(\beta_{1}+y_{t}-y_{t-1},\beta_{1}+y_{t+h}-y_{t+h-1})\notag\\
+    &amp;=\left\{
+    \begin{array}{rcl}
+        &amp;2\sigma_{y}^{2}              &amp; {h=0}\\
+        &amp;-\sigma_{y}^{2}           &amp; {|h|=1}\\
+        &amp;0           &amp; {2\leq |h|}\notag
+\end{array} \right.
+\end{align}\]</span>
+由于均值函数与t无关，并且自协方差函数仅与h有关，所以该序列平稳。</p>
+</div>
+</div>
+<div id="平稳性证明" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> 3.5 平稳性证明<a href="第三章作业.html#平稳性证明" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>序列为：
+<span class="math display">\[\begin{align}
+    \nabla x_{t}&amp;= x_{t}-x_{t-1}\notag\\
+    &amp;= \sigma+w_{t}+y_{t}-y_{t-1}\notag
+\end{align}\]</span>
+其均值和自协方差函数分别如下：
+<span class="math display">\[\begin{align}
+    \mu_{\nabla x_{t}}&amp;=E[\nabla x_{t}]=\sigma\notag\\
+    \gamma(h)&amp;=cov(\sigma+w_{t}+y_{t}-y_{t-1},\sigma+w_{t+h}+y_{t+h}-y_{t+h-1})\notag\\
+    &amp;=\left\{
+    \begin{array}{rcl}
+        &amp;2\sigma_{y}^{2}+\sigma_{w}^{2}              &amp; {h=0}\\
+        &amp;\sigma_{y}^{2}           &amp; {|h|=1}\\
+        &amp;0           &amp; {2\leq |h|}\notag
+\end{array} \right.
+\end{align}\]</span></p>
+</div>
+<div id="冰川纹层数据" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> 3.6 冰川纹层数据<a href="第三章作业.html#冰川纹层数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-6" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> 3.6 (a)<a href="第三章作业.html#a-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在数据的前半部分和后半部分计算样本方差：</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="第三章作业.html#cb68-1" tabindex="-1"></a>x<span class="ot">=</span>varve</span>
+<span id="cb68-2"><a href="第三章作业.html#cb68-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">log</span>(varve)</span>
+<span id="cb68-3"><a href="第三章作业.html#cb68-3" tabindex="-1"></a>n<span class="ot">=</span><span class="fu">length</span>(x)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb68-4"><a href="第三章作业.html#cb68-4" tabindex="-1"></a>N<span class="ot">=</span><span class="fu">length</span>(x)</span>
+<span id="cb68-5"><a href="第三章作业.html#cb68-5" tabindex="-1"></a><span class="fu">var</span>(x[<span class="dv">1</span><span class="sc">:</span>n])</span></code></pre></div>
+<pre><code>## [1] 133.4574</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="第三章作业.html#cb70-1" tabindex="-1"></a><span class="fu">var</span>(x[n<span class="sc">:</span>N])</span></code></pre></div>
+<pre><code>## [1] 592.9645</code></pre>
+<p>这表明数据存在异方差性。</p>
+<p>进行变换<span class="math inline">\(y_t=log(x_t)\)</span>后，再次在数据的前半部分和后半部分计算样本方差：</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="第三章作业.html#cb72-1" tabindex="-1"></a>n<span class="ot">=</span><span class="fu">length</span>(y)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb72-2"><a href="第三章作业.html#cb72-2" tabindex="-1"></a>N<span class="ot">=</span><span class="fu">length</span>(y)</span>
+<span id="cb72-3"><a href="第三章作业.html#cb72-3" tabindex="-1"></a><span class="fu">var</span>(y[<span class="dv">1</span><span class="sc">:</span>n])</span></code></pre></div>
+<pre><code>## [1] 0.2707217</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="第三章作业.html#cb74-1" tabindex="-1"></a><span class="fu">var</span>(y[n<span class="sc">:</span>N])</span></code></pre></div>
+<pre><code>## [1] 0.4506843</code></pre>
+<p>这说明变换稳定了序列的方差。</p>
+<p>绘制直方图：</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="第三章作业.html#cb76-1" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="第三章作业.html#cb77-1" tabindex="-1"></a><span class="fu">hist</span>(y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-2.png" width="672" />
+观察直方图可以发现数据向中间靠拢，这表明通过变换数据改善了对正态性的近似。</p>
+</div>
+<div id="b-6" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> 3.6 (b)<a href="第三章作业.html#b-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>绘制序列<span class="math inline">\(y_t\)</span></p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="第三章作业.html#cb78-1" tabindex="-1"></a><span class="fu">tsplot</span>(y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+存在100年的时间间隔，可以观察到与图1.2中的全球温度记录中观察到的行为相当的行为。</p>
+</div>
+<div id="c-3" class="section level3 hasAnchor" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> 3.6 (c)<a href="第三章作业.html#c-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>检查<span class="math inline">\(y_t\)</span>的样本ACF，并绘制图像</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="第三章作业.html#cb79-1" tabindex="-1"></a><span class="fu">acf1</span>(y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<pre><code>##  [1] 0.59 0.51 0.46 0.46 0.46 0.46 0.43 0.43 0.41 0.37 0.37 0.33 0.34 0.38 0.36
+## [16] 0.35 0.34 0.33 0.30 0.31 0.36 0.36 0.32 0.33 0.31 0.29 0.30 0.27 0.28 0.28
+## [31] 0.28 0.28 0.23 0.23 0.25 0.23</code></pre>
+<p>可以发现样本ACF较高，这说明进行变换后时间序列<span class="math inline">\(y_t\)</span>仍然存在问题</p>
+</div>
+<div id="d-1" class="section level3 hasAnchor" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> 3.6 (d)<a href="第三章作业.html#d-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>计算差分<span class="math inline">\(u_t=y_t-y_{t-1}\)</span>，检查其时序图以及样本ACF</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="第三章作业.html#cb81-1" tabindex="-1"></a>u<span class="ot">=</span>y<span class="sc">-</span>stats<span class="sc">::</span><span class="fu">lag</span>(y,<span class="dv">1</span>)</span>
+<span id="cb81-2"><a href="第三章作业.html#cb81-2" tabindex="-1"></a><span class="fu">tsplot</span>(u)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="第三章作业.html#cb82-1" tabindex="-1"></a><span class="fu">acf1</span>(u)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<pre><code>##  [1] -0.40 -0.04 -0.06  0.01  0.00  0.04 -0.04  0.04  0.01 -0.05  0.06 -0.06
+## [13] -0.04  0.08 -0.02  0.01  0.00  0.03 -0.05 -0.06  0.07  0.04 -0.06  0.05
+## [25] -0.01 -0.04  0.05 -0.05  0.03 -0.02  0.00  0.06 -0.05 -0.03  0.04 -0.05</code></pre>
+<p>这表明差分对数纹层数据得到了一个相当稳定的序列。<span class="math inline">\(u_t\)</span>实际上是除去了时间影响的一个序列，这使得它近似一个白噪声。</p>
+</div>
+</div>
+<div id="全球温度序列" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> 3.7 全球温度序列<a href="第三章作业.html#全球温度序列" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="移动平均平滑器" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> 3.7 移动平均平滑器<a href="第三章作业.html#移动平均平滑器" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="第三章作业.html#cb84-1" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(.<span class="dv">5</span>, <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">11</span>), .<span class="dv">5</span>)<span class="sc">/</span><span class="dv">12</span></span>
+<span id="cb84-2"><a href="第三章作业.html#cb84-2" tabindex="-1"></a>gtemp_landf <span class="ot">=</span> stats<span class="sc">::</span><span class="fu">filter</span>(gtemp_land, <span class="at">sides=</span><span class="dv">2</span>, <span class="at">filter=</span>w)</span>
+<span id="cb84-3"><a href="第三章作业.html#cb84-3" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="第三章作业.html#cb84-4" tabindex="-1"></a>culer <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rgb</span>(.<span class="dv">85</span>,.<span class="dv">30</span>,.<span class="dv">12</span>,.<span class="dv">6</span>),<span class="fu">rgb</span>(.<span class="dv">12</span>,.<span class="dv">65</span>,.<span class="dv">85</span>,.<span class="dv">6</span>))</span>
+<span id="cb84-5"><a href="第三章作业.html#cb84-5" tabindex="-1"></a><span class="fu">tsplot</span>(gtemp_landf,<span class="at">col=</span>culer[<span class="dv">1</span>], <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb84-6"><a href="第三章作业.html#cb84-6" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">&quot;Temperature Deviations&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Global Warming&quot;</span>)</span>
+<span id="cb84-7"><a href="第三章作业.html#cb84-7" tabindex="-1"></a><span class="fu">lines</span>(gtemp_ocean,<span class="at">col=</span>culer[<span class="dv">2</span>],<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb84-8"><a href="第三章作业.html#cb84-8" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">col=</span>culer,<span class="at">lty =</span> <span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb84-9"><a href="第三章作业.html#cb84-9" tabindex="-1"></a><span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Land Surface&quot;</span>,<span class="st">&quot;Sea Surface&quot;</span>),<span class="at">bg=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="核平滑" class="section level3 hasAnchor" number="3.8.2">
+<h3><span class="header-section-number">3.8.2</span> 3.7 核平滑<a href="第三章作业.html#核平滑" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="第三章作业.html#cb85-1" tabindex="-1"></a>culer <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rgb</span>(.<span class="dv">85</span>,.<span class="dv">30</span>,.<span class="dv">12</span>,.<span class="dv">6</span>),<span class="fu">rgb</span>(.<span class="dv">12</span>,.<span class="dv">65</span>,.<span class="dv">85</span>,.<span class="dv">6</span>))</span>
+<span id="cb85-2"><a href="第三章作业.html#cb85-2" tabindex="-1"></a><span class="fu">tsplot</span>(gtemp_land,<span class="at">col=</span>culer[<span class="dv">1</span>], <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb85-3"><a href="第三章作业.html#cb85-3" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">&quot;Temperature Deviations&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Global Warming&quot;</span>)</span>
+<span id="cb85-4"><a href="第三章作业.html#cb85-4" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">ksmooth</span>(<span class="fu">time</span>(gtemp_ocean), gtemp_ocean, <span class="st">&quot;normal&quot;</span>, <span class="at">bandwidth=</span><span class="dv">1</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">6</span>)</span>
+<span id="cb85-5"><a href="第三章作业.html#cb85-5" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">col=</span>culer,<span class="at">lty =</span> <span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb85-6"><a href="第三章作业.html#cb85-6" tabindex="-1"></a><span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Land Surface&quot;</span>,<span class="st">&quot;Sea Surface&quot;</span>),<span class="at">bg=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+</div>
+<div id="lowess" class="section level3 hasAnchor" number="3.8.3">
+<h3><span class="header-section-number">3.8.3</span> 3.7 lowess<a href="第三章作业.html#lowess" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="第三章作业.html#cb86-1" tabindex="-1"></a>culer <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rgb</span>(.<span class="dv">85</span>,.<span class="dv">30</span>,.<span class="dv">12</span>,.<span class="dv">6</span>),<span class="fu">rgb</span>(.<span class="dv">12</span>,.<span class="dv">65</span>,.<span class="dv">85</span>,.<span class="dv">6</span>))</span>
+<span id="cb86-2"><a href="第三章作业.html#cb86-2" tabindex="-1"></a><span class="fu">tsplot</span>(gtemp_land,<span class="at">col=</span>culer[<span class="dv">1</span>], <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb86-3"><a href="第三章作业.html#cb86-3" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">&quot;Temperature Deviations&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Global Warming&quot;</span>)</span>
+<span id="cb86-4"><a href="第三章作业.html#cb86-4" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(gtemp_ocean, <span class="at">f=</span>.<span class="dv">05</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">4</span>) </span>
+<span id="cb86-5"><a href="第三章作业.html#cb86-5" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">col=</span>culer,<span class="at">lty =</span> <span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb86-6"><a href="第三章作业.html#cb86-6" tabindex="-1"></a><span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Land Surface&quot;</span>,<span class="st">&quot;Sea Surface&quot;</span>),<span class="at">bg=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+</div>
+</div>
+<div id="厄尔尼诺现象" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> 3.8 厄尔尼诺现象<a href="第三章作业.html#厄尔尼诺现象" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="第三章作业.html#cb87-1" tabindex="-1"></a>trnd <span class="ot">=</span> <span class="fu">time</span>(soi)</span>
+<span id="cb87-2"><a href="第三章作业.html#cb87-2" tabindex="-1"></a>C4 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>trnd<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb87-3"><a href="第三章作业.html#cb87-3" tabindex="-1"></a>S4 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>trnd<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb87-4"><a href="第三章作业.html#cb87-4" tabindex="-1"></a><span class="fu">tsplot</span>(C4, <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>,.<span class="dv">6</span>))</span>
+<span id="cb87-5"><a href="第三章作业.html#cb87-5" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(C4, <span class="at">f=</span>.<span class="dv">05</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">4</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="第三章作业.html#cb88-1" tabindex="-1"></a><span class="fu">tsplot</span>(S4, <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>,.<span class="dv">6</span>))</span>
+<span id="cb88-2"><a href="第三章作业.html#cb88-2" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(S4, <span class="at">f=</span>.<span class="dv">05</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">4</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+</div>
+<div id="强生公司数据序列" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> 3.9 强生公司数据序列<a href="第三章作业.html#强生公司数据序列" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>使用例 3.20 中提到的方法将滞后数据分解为 <span class="math inline">\(x_t=T_t+S_t+N_t\)</span>，可得结果如下：</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="第三章作业.html#cb89-1" tabindex="-1"></a>culer <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb89-2"><a href="第三章作业.html#cb89-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">log</span>(jj)</span>
+<span id="cb89-3"><a href="第三章作业.html#cb89-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">cex.main=</span><span class="dv">1</span>)</span>
+<span id="cb89-4"><a href="第三章作业.html#cb89-4" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">stl</span>(x, <span class="at">s.window=</span><span class="dv">15</span>)<span class="sc">$</span>time.series</span>
+<span id="cb89-5"><a href="第三章作业.html#cb89-5" tabindex="-1"></a></span>
+<span id="cb89-6"><a href="第三章作业.html#cb89-6" tabindex="-1"></a><span class="fu">tsplot</span>(x, <span class="at">main=</span><span class="st">&#39;Johnson &amp; Johnson Quarterly Earnings&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log(QEPS)&#39;</span>, <span class="at">col=</span><span class="dv">8</span>)</span>
+<span id="cb89-7"><a href="第三章作业.html#cb89-7" tabindex="-1"></a><span class="fu">text</span>(x, <span class="at">labels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span>culer, <span class="at">cex=</span><span class="fl">1.25</span>)</span>
+<span id="cb89-8"><a href="第三章作业.html#cb89-8" tabindex="-1"></a></span>
+<span id="cb89-9"><a href="第三章作业.html#cb89-9" tabindex="-1"></a><span class="fu">tsplot</span>(out[,<span class="dv">1</span>], <span class="at">main=</span><span class="st">&quot;Seasonal&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;log(QEPS)&#39;</span>,<span class="at">col=</span><span class="dv">8</span>)</span>
+<span id="cb89-10"><a href="第三章作业.html#cb89-10" tabindex="-1"></a><span class="fu">text</span>(out[,<span class="dv">1</span>], <span class="at">labels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span>culer, <span class="at">cex=</span><span class="fl">1.25</span>)</span>
+<span id="cb89-11"><a href="第三章作业.html#cb89-11" tabindex="-1"></a></span>
+<span id="cb89-12"><a href="第三章作业.html#cb89-12" tabindex="-1"></a><span class="fu">tsplot</span>(out[,<span class="dv">2</span>], <span class="at">main=</span><span class="st">&quot;Trend&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;log(QEPS)&#39;</span>, <span class="at">col=</span><span class="dv">8</span>)</span>
+<span id="cb89-13"><a href="第三章作业.html#cb89-13" tabindex="-1"></a><span class="fu">text</span>(out[,<span class="dv">2</span>], <span class="at">labels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span>culer, <span class="at">cex=</span><span class="fl">1.25</span>)</span>
+<span id="cb89-14"><a href="第三章作业.html#cb89-14" tabindex="-1"></a></span>
+<span id="cb89-15"><a href="第三章作业.html#cb89-15" tabindex="-1"></a><span class="fu">tsplot</span>(out[,<span class="dv">3</span>], <span class="at">main=</span><span class="st">&quot;Noise&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;log(QEPS)&#39;</span>, <span class="at">col=</span><span class="dv">8</span>)</span>
+<span id="cb89-16"><a href="第三章作业.html#cb89-16" tabindex="-1"></a><span class="fu">text</span>(out[,<span class="dv">3</span>], <span class="at">labels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span>culer, <span class="at">cex=</span><span class="fl">1.25</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="80%" />
+3.1中分解得到的“白噪声”数据并不是真正的白噪声，相比之下，3.9采用的方法可以更好的分解数据。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第二章作业.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第四章作业.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-时间序列作业3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

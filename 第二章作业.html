@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 第二章作业 | A Minimal Book Example</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 第二章作业 | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 第二章作业 | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="思想先进的猫猫" />
+
+
+<meta name="date" content="2023-05-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="第一章作业.html"/>
+<link rel="next" href="第三章作业.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="chapter" data-level="1" data-path="第一章作业.html"><a href="第一章作业.html"><i class="fa fa-check"></i><b>1</b> 第一章作业</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="第一章作业.html"><a href="第一章作业.html#复现课本图像"><i class="fa fa-check"></i><b>1.1</b> 复现课本图像</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="第一章作业.html"><a href="第一章作业.html#强生公司季度收益序列"><i class="fa fa-check"></i><b>1.1.1</b> 强生公司季度收益序列</a></li>
+<li class="chapter" data-level="1.1.2" data-path="第一章作业.html"><a href="第一章作业.html#全球变暖和气候变化"><i class="fa fa-check"></i><b>1.1.2</b> 全球变暖和气候变化</a></li>
+<li class="chapter" data-level="1.1.3" data-path="第一章作业.html"><a href="第一章作业.html#道琼斯工业平均指数"><i class="fa fa-check"></i><b>1.1.3</b> 道琼斯工业平均指数</a></li>
+<li class="chapter" data-level="1.1.4" data-path="第一章作业.html"><a href="第一章作业.html#美国gdp对数增长率与实际增长率"><i class="fa fa-check"></i><b>1.1.4</b> 美国GDP对数增长率与实际增长率</a></li>
+<li class="chapter" data-level="1.1.5" data-path="第一章作业.html"><a href="第一章作业.html#厄尔尼诺南方涛动enso"><i class="fa fa-check"></i><b>1.1.5</b> 厄尔尼诺—南方涛动（ENSO）</a></li>
+<li class="chapter" data-level="1.1.6" data-path="第一章作业.html"><a href="第一章作业.html#捕食者与猎物的互动"><i class="fa fa-check"></i><b>1.1.6</b> 捕食者与猎物的互动</a></li>
+<li class="chapter" data-level="1.1.7" data-path="第一章作业.html"><a href="第一章作业.html#fmri图像"><i class="fa fa-check"></i><b>1.1.7</b> fMRI图像</a></li>
+<li class="chapter" data-level="1.1.8" data-path="第一章作业.html"><a href="第一章作业.html#滤波序列"><i class="fa fa-check"></i><b>1.1.8</b> 滤波序列</a></li>
+<li class="chapter" data-level="1.1.9" data-path="第一章作业.html"><a href="第一章作业.html#自回归模型"><i class="fa fa-check"></i><b>1.1.9</b> 自回归模型</a></li>
+<li class="chapter" data-level="1.1.10" data-path="第一章作业.html"><a href="第一章作业.html#带漂移项的随机游走序列"><i class="fa fa-check"></i><b>1.1.10</b> 带漂移项的随机游走序列</a></li>
+<li class="chapter" data-level="1.1.11" data-path="第一章作业.html"><a href="第一章作业.html#信号与噪声"><i class="fa fa-check"></i><b>1.1.11</b> 信号与噪声</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="第一章作业.html"><a href="第一章作业.html#随机数的产生"><i class="fa fa-check"></i><b>1.2</b> 随机数的产生</a></li>
+<li class="chapter" data-level="1.3" data-path="第一章作业.html"><a href="第一章作业.html#课后习题"><i class="fa fa-check"></i><b>1.3</b> 课后习题</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="第一章作业.html"><a href="第一章作业.html#习题1.1"><i class="fa fa-check"></i><b>1.3.1</b> 习题1.1</a></li>
+<li class="chapter" data-level="1.3.2" data-path="第一章作业.html"><a href="第一章作业.html#习题1.2"><i class="fa fa-check"></i><b>1.3.2</b> 习题1.2</a></li>
+<li class="chapter" data-level="1.3.3" data-path="第一章作业.html"><a href="第一章作业.html#习题1.3"><i class="fa fa-check"></i><b>1.3.3</b> 习题1.3</a></li>
+<li class="chapter" data-level="1.3.4" data-path="第一章作业.html"><a href="第一章作业.html#习题1.4"><i class="fa fa-check"></i><b>1.3.4</b> 习题1.4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="第二章作业.html"><a href="第二章作业.html"><i class="fa fa-check"></i><b>2</b> 第二章作业</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="第二章作业.html"><a href="第二章作业.html#load-package"><i class="fa fa-check"></i><b>2.1</b> Load package</a></li>
+<li class="chapter" data-level="2.2" data-path="第二章作业.html"><a href="第二章作业.html#高斯白噪声序列"><i class="fa fa-check"></i><b>2.2</b> 2.11 高斯白噪声序列</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="第二章作业.html"><a href="第二章作业.html#a"><i class="fa fa-check"></i><b>2.2.1</b> 2.11 (a)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="第二章作业.html"><a href="第二章作业.html#b"><i class="fa fa-check"></i><b>2.2.2</b> 2.11 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="第二章作业.html"><a href="第二章作业.html#移动平均序列"><i class="fa fa-check"></i><b>2.3</b> 2.12 移动平均序列</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="第二章作业.html"><a href="第二章作业.html#a-1"><i class="fa fa-check"></i><b>2.3.1</b> 2.12 (a)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="第二章作业.html"><a href="第二章作业.html#b-1"><i class="fa fa-check"></i><b>2.3.2</b> 2.12 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="第二章作业.html"><a href="第二章作业.html#ar模型"><i class="fa fa-check"></i><b>2.4</b> 2.13 AR模型</a></li>
+<li class="chapter" data-level="2.5" data-path="第二章作业.html"><a href="第二章作业.html#信号加噪声模型"><i class="fa fa-check"></i><b>2.5</b> 2.14 信号加噪声模型</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="第三章作业.html"><a href="第三章作业.html"><i class="fa fa-check"></i><b>3</b> 第三章作业</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="第三章作业.html"><a href="第三章作业.html#libs"><i class="fa fa-check"></i><b>3.1</b> Libs</a></li>
+<li class="chapter" data-level="3.2" data-path="第三章作业.html"><a href="第三章作业.html#结构回归模型"><i class="fa fa-check"></i><b>3.2</b> 3.1 结构回归模型</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="第三章作业.html"><a href="第三章作业.html#a-2"><i class="fa fa-check"></i><b>3.2.1</b> 3.1 (a)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="第三章作业.html"><a href="第三章作业.html#b-2"><i class="fa fa-check"></i><b>3.2.2</b> 3.1 (b)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="第三章作业.html"><a href="第三章作业.html#c"><i class="fa fa-check"></i><b>3.2.3</b> 3.1 (c)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="第三章作业.html"><a href="第三章作业.html#d"><i class="fa fa-check"></i><b>3.2.4</b> 3.1 (d)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="第三章作业.html"><a href="第三章作业.html#e"><i class="fa fa-check"></i><b>3.2.5</b> 3.1 (e)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="第三章作业.html"><a href="第三章作业.html#检验的死亡率数据"><i class="fa fa-check"></i><b>3.3</b> 3.2 检验的死亡率数据</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="第三章作业.html"><a href="第三章作业.html#a-3"><i class="fa fa-check"></i><b>3.3.1</b> 3.2 (a)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="第三章作业.html"><a href="第三章作业.html#b-3"><i class="fa fa-check"></i><b>3.3.2</b> 3.2 (b)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="第三章作业.html"><a href="第三章作业.html#随机游走和趋势平稳过程之间的区别"><i class="fa fa-check"></i><b>3.4</b> 3.3 随机游走和趋势平稳过程之间的区别</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="第三章作业.html"><a href="第三章作业.html#a-4"><i class="fa fa-check"></i><b>3.4.1</b> 3.3 (a)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="第三章作业.html"><a href="第三章作业.html#b-4"><i class="fa fa-check"></i><b>3.4.2</b> 3.3 (b)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="第三章作业.html"><a href="第三章作业.html#c-1"><i class="fa fa-check"></i><b>3.4.3</b> 3.3 (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="第三章作业.html"><a href="第三章作业.html#线性趋势组成的过程"><i class="fa fa-check"></i><b>3.5</b> 3.4 线性趋势组成的过程</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="第三章作业.html"><a href="第三章作业.html#a-5"><i class="fa fa-check"></i><b>3.5.1</b> 3.4 (a)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="第三章作业.html"><a href="第三章作业.html#b-5"><i class="fa fa-check"></i><b>3.5.2</b> 3.4 (b)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="第三章作业.html"><a href="第三章作业.html#c-2"><i class="fa fa-check"></i><b>3.5.3</b> 3.4 (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="第三章作业.html"><a href="第三章作业.html#平稳性证明"><i class="fa fa-check"></i><b>3.6</b> 3.5 平稳性证明</a></li>
+<li class="chapter" data-level="3.7" data-path="第三章作业.html"><a href="第三章作业.html#冰川纹层数据"><i class="fa fa-check"></i><b>3.7</b> 3.6 冰川纹层数据</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="第三章作业.html"><a href="第三章作业.html#a-6"><i class="fa fa-check"></i><b>3.7.1</b> 3.6 (a)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="第三章作业.html"><a href="第三章作业.html#b-6"><i class="fa fa-check"></i><b>3.7.2</b> 3.6 (b)</a></li>
+<li class="chapter" data-level="3.7.3" data-path="第三章作业.html"><a href="第三章作业.html#c-3"><i class="fa fa-check"></i><b>3.7.3</b> 3.6 (c)</a></li>
+<li class="chapter" data-level="3.7.4" data-path="第三章作业.html"><a href="第三章作业.html#d-1"><i class="fa fa-check"></i><b>3.7.4</b> 3.6 (d)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="第三章作业.html"><a href="第三章作业.html#全球温度序列"><i class="fa fa-check"></i><b>3.8</b> 3.7 全球温度序列</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="第三章作业.html"><a href="第三章作业.html#移动平均平滑器"><i class="fa fa-check"></i><b>3.8.1</b> 3.7 移动平均平滑器</a></li>
+<li class="chapter" data-level="3.8.2" data-path="第三章作业.html"><a href="第三章作业.html#核平滑"><i class="fa fa-check"></i><b>3.8.2</b> 3.7 核平滑</a></li>
+<li class="chapter" data-level="3.8.3" data-path="第三章作业.html"><a href="第三章作业.html#lowess"><i class="fa fa-check"></i><b>3.8.3</b> 3.7 lowess</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="第三章作业.html"><a href="第三章作业.html#厄尔尼诺现象"><i class="fa fa-check"></i><b>3.9</b> 3.8 厄尔尼诺现象</a></li>
+<li class="chapter" data-level="3.10" data-path="第三章作业.html"><a href="第三章作业.html#强生公司数据序列"><i class="fa fa-check"></i><b>3.10</b> 3.9 强生公司数据序列</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="第四章作业.html"><a href="第四章作业.html"><i class="fa fa-check"></i><b>4</b> 第四章作业</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="第四章作业.html"><a href="第四章作业.html#libs-1"><i class="fa fa-check"></i><b>4.1</b> Libs</a></li>
+<li class="chapter" data-level="4.2" data-path="第四章作业.html"><a href="第四章作业.html#ma1的acf"><i class="fa fa-check"></i><b>4.2</b> 4.1 MA(1)的ACF</a></li>
+<li class="chapter" data-level="4.3" data-path="第四章作业.html"><a href="第四章作业.html#白噪声过程"><i class="fa fa-check"></i><b>4.3</b> 4.2 白噪声过程</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="第四章作业.html"><a href="第四章作业.html#a-7"><i class="fa fa-check"></i><b>4.3.1</b> (a)</a></li>
+<li class="chapter" data-level="4.3.2" data-path="第四章作业.html"><a href="第四章作业.html#b-7"><i class="fa fa-check"></i><b>4.3.2</b> (b)</a></li>
+<li class="chapter" data-level="4.3.3" data-path="第四章作业.html"><a href="第四章作业.html#c-4"><i class="fa fa-check"></i><b>4.3.3</b> (c)</a></li>
+<li class="chapter" data-level="4.3.4" data-path="第四章作业.html"><a href="第四章作业.html#d-2"><i class="fa fa-check"></i><b>4.3.4</b> (d)</a></li>
+<li class="chapter" data-level="4.3.5" data-path="第四章作业.html"><a href="第四章作业.html#e-1"><i class="fa fa-check"></i><b>4.3.5</b> (e)</a></li>
+<li class="chapter" data-level="4.3.6" data-path="第四章作业.html"><a href="第四章作业.html#f"><i class="fa fa-check"></i><b>4.3.6</b> (f)</a></li>
+<li class="chapter" data-level="4.3.7" data-path="第四章作业.html"><a href="第四章作业.html#g"><i class="fa fa-check"></i><b>4.3.7</b> (g)</a></li>
+<li class="chapter" data-level="4.3.8" data-path="第四章作业.html"><a href="第四章作业.html#h"><i class="fa fa-check"></i><b>4.3.8</b> (h)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="第四章作业.html"><a href="第四章作业.html#参数冗余的讨论"><i class="fa fa-check"></i><b>4.4</b> 4.3 参数冗余的讨论</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="第四章作业.html"><a href="第四章作业.html#a-8"><i class="fa fa-check"></i><b>4.4.1</b> (a)</a></li>
+<li class="chapter" data-level="4.4.2" data-path="第四章作业.html"><a href="第四章作业.html#b-8"><i class="fa fa-check"></i><b>4.4.2</b> (b)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="第四章作业.html"><a href="第四章作业.html#c-5"><i class="fa fa-check"></i><b>4.4.3</b> (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="第四章作业.html"><a href="第四章作业.html#三个arma模型"><i class="fa fa-check"></i><b>4.5</b> 4.4 三个ARMA模型</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="第四章作业.html"><a href="第四章作业.html#a-9"><i class="fa fa-check"></i><b>4.5.1</b> (a)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="第四章作业.html"><a href="第四章作业.html#b-9"><i class="fa fa-check"></i><b>4.5.2</b> (b)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="第四章作业.html"><a href="第四章作业.html#c-6"><i class="fa fa-check"></i><b>4.5.3</b> (c)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="第四章作业.html"><a href="第四章作业.html#cmort数据分析"><i class="fa fa-check"></i><b>4.6</b> 4.5 cmort数据分析</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="第四章作业.html"><a href="第四章作业.html#a-10"><i class="fa fa-check"></i><b>4.6.1</b> (a)</a></li>
+<li class="chapter" data-level="4.6.2" data-path="第四章作业.html"><a href="第四章作业.html#b-10"><i class="fa fa-check"></i><b>4.6.2</b> (b)</a></li>
+<li class="chapter" data-level="4.6.3" data-path="第四章作业.html"><a href="第四章作业.html#c-7"><i class="fa fa-check"></i><b>4.6.3</b> (c)</a></li>
+<li class="chapter" data-level="4.6.4" data-path="第四章作业.html"><a href="第四章作业.html#d-3"><i class="fa fa-check"></i><b>4.6.4</b> (d)</a></li>
+<li class="chapter" data-level="4.6.5" data-path="第四章作业.html"><a href="第四章作业.html#e-2"><i class="fa fa-check"></i><b>4.6.5</b> (e)</a></li>
+<li class="chapter" data-level="4.6.6" data-path="第四章作业.html"><a href="第四章作业.html#f-1"><i class="fa fa-check"></i><b>4.6.6</b> (f)</a></li>
+<li class="chapter" data-level="4.6.7" data-path="第四章作业.html"><a href="第四章作业.html#g-1"><i class="fa fa-check"></i><b>4.6.7</b> (g)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="第四章作业.html"><a href="第四章作业.html#模型预测与mspe"><i class="fa fa-check"></i><b>4.7</b> 4.6 模型预测与MSPE</a></li>
+<li class="chapter" data-level="4.8" data-path="第四章作业.html"><a href="第四章作业.html#参数估计"><i class="fa fa-check"></i><b>4.8</b> 4.7 参数估计</a></li>
+<li class="chapter" data-level="4.9" data-path="第四章作业.html"><a href="第四章作业.html#参数的mle"><i class="fa fa-check"></i><b>4.9</b> 4.8 参数的MLE</a></li>
+<li class="chapter" data-level="4.10" data-path="第四章作业.html"><a href="第四章作业.html#ar1的高斯-牛顿算法"><i class="fa fa-check"></i><b>4.10</b> 4.9 AR(1)的高斯-牛顿算法</a></li>
+<li class="chapter" data-level="4.11" data-path="第四章作业.html"><a href="第四章作业.html#预测误差"><i class="fa fa-check"></i><b>4.11</b> 4.10 预测误差</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="第二章作业" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 第二章作业<a href="第二章作业.html#第二章作业" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="load-package" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Load package<a href="第二章作业.html#load-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>声明需要使用的包</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="第二章作业.html#cb22-1" tabindex="-1"></a><span class="fu">library</span>(astsa)</span></code></pre></div>
+</div>
+<div id="高斯白噪声序列" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 2.11 高斯白噪声序列<a href="第二章作业.html#高斯白噪声序列" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 2.11 (a)<a href="第二章作业.html#a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>和例 1.7 一样，模拟长度为 n = 500 的一个高斯白噪声序列，然后计算其滞后
+1 到 20 阶的样本 ACF，记作 <span class="math inline">\(\hat{\rho}(h)\)</span>。把得到的结果与真实的 ACF 即 <span class="math inline">\(\rho(h)\)</span> 进行
+比较。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="第二章作业.html#cb23-1" tabindex="-1"></a>w<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb23-2"><a href="第二章作业.html#cb23-2" tabindex="-1"></a><span class="fu">acf1</span>(w,<span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<pre><code>##  [1] -0.01  0.03  0.05 -0.04  0.02  0.00 -0.06 -0.02 -0.01  0.02  0.05 -0.02
+## [13]  0.01  0.07  0.02  0.03 -0.01 -0.04  0.03  0.04</code></pre>
+</div>
+<div id="b" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 2.11 (b)<a href="第二章作业.html#b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>设 n = 50，重复（a）。长度 n 是如何影响结果的？</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="第二章作业.html#cb25-1" tabindex="-1"></a>w<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">50</span>)</span>
+<span id="cb25-2"><a href="第二章作业.html#cb25-2" tabindex="-1"></a><span class="fu">acf1</span>(w,<span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<pre><code>##  [1] -0.03  0.04  0.19 -0.01 -0.01  0.10 -0.05 -0.34  0.08 -0.09 -0.23  0.02
+## [13] -0.09 -0.12 -0.12 -0.01 -0.11  0.01  0.10 -0.07</code></pre>
+<p>长度 n 越长计算得到的ACF越小，得到的结果越准确。</p>
+</div>
+</div>
+<div id="移动平均序列" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 2.12 移动平均序列<a href="第二章作业.html#移动平均序列" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 2.12 (a)<a href="第二章作业.html#a-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>和例 1.8 一样，模拟长度为 n = 500 的一个移动平均序列，然后计算其滞后 1
+到 20 阶样本 ACF 即 <span class="math inline">\(\hat{\rho}(h)\)</span>。把得到的结果与真实的 ACF 即 <span class="math inline">\(\rho(h)\)</span> 进行
+比较。</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="第二章作业.html#cb27-1" tabindex="-1"></a>wa<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">502</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb27-2"><a href="第二章作业.html#cb27-2" tabindex="-1"></a>va<span class="ot">=</span><span class="fu">filter</span>(wa,<span class="at">filter=</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fl">3.3</span>))</span>
+<span id="cb27-3"><a href="第二章作业.html#cb27-3" tabindex="-1"></a><span class="fu">acf1</span>(va,<span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<pre><code>##  [1]  0.02  0.09 -0.01  0.00  0.05 -0.03  0.03  0.01  0.03  0.05 -0.04  0.01
+## [13] -0.03  0.03 -0.01  0.01  0.01  0.05 -0.07  0.05</code></pre>
+</div>
+<div id="b-1" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 2.12 (b)<a href="第二章作业.html#b-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>设 n = 50，重复（a）。长度 n 是如何影响结果的？</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="第二章作业.html#cb29-1" tabindex="-1"></a>wa<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">52</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb29-2"><a href="第二章作业.html#cb29-2" tabindex="-1"></a>va<span class="ot">=</span>stats<span class="sc">::</span><span class="fu">filter</span>(wa,<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb29-3"><a href="第二章作业.html#cb29-3" tabindex="-1"></a><span class="fu">acf1</span>(va,<span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<pre><code>##  [1]  0.50  0.25 -0.07  0.10  0.13  0.20  0.02 -0.06 -0.28 -0.15 -0.18 -0.07
+## [13] -0.18 -0.13 -0.14  0.01 -0.05  0.08 -0.04  0.07</code></pre>
+<p>长度 n 越长计算得到的ACF越小，得到的结果越准确。</p>
+</div>
+</div>
+<div id="ar模型" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 2.13 AR模型<a href="第二章作业.html#ar模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>模拟一个例 1.9 中给出的 AR 模型，模拟序列长度为 n = 500。然后绘制其滞后 1
+到 50 阶的样本 ACF。从样本 ACF 可以大致得到数据循环行为的什么结论？</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="第二章作业.html#cb31-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">90210</span>)</span>
+<span id="cb31-2"><a href="第二章作业.html#cb31-2" tabindex="-1"></a>w<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span><span class="sc">+</span><span class="dv">50</span>) <span class="co"># 50 extra to avoid startup problems</span></span>
+<span id="cb31-3"><a href="第二章作业.html#cb31-3" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">filter</span>(w,<span class="at">filter =</span> <span class="fu">c</span>(<span class="fl">1.5</span>,<span class="sc">-</span>.<span class="dv">75</span>),<span class="at">method =</span> <span class="st">&quot;recursive&quot;</span>)[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)]</span>
+<span id="cb31-4"><a href="第二章作业.html#cb31-4" tabindex="-1"></a><span class="fu">acf1</span>(x,<span class="dv">50</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<pre><code>##  [1]  0.86  0.53  0.14 -0.21 -0.43 -0.49 -0.41 -0.24 -0.05  0.13  0.24  0.28
+## [13]  0.26  0.19  0.11  0.02 -0.04 -0.08 -0.10 -0.09 -0.08 -0.06 -0.04 -0.01
+## [25]  0.02  0.06  0.09  0.12  0.13  0.12  0.08  0.02 -0.05 -0.11 -0.14 -0.13
+## [37] -0.08 -0.01  0.07  0.12  0.14  0.11  0.06 -0.01 -0.06 -0.10 -0.11 -0.09
+## [49] -0.05 -0.03</code></pre>
+<p>随着样本ACF阶数的增加，ACF将逐渐收敛到0。</p>
+</div>
+<div id="信号加噪声模型" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> 2.14 信号加噪声模型<a href="第二章作业.html#信号加噪声模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>4 模拟例 1.11 中给出的信号加噪声模型，其中（a）<span class="math inline">\(\sigma_{w}\)</span> = 0,（b）<span class="math inline">\(\sigma_{w}\)</span> = 1，（c）<span class="math inline">\(\sigma_{w}\)</span> = 5。模
+拟序列长度为 n = 500。然后绘制生成的这三个序列的滞后 1 到 100 阶的样本 ACF。
+从这三个序列的样本 ACF 可以大致得到数据循环行为的什么结论？</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="第二章作业.html#cb33-1" tabindex="-1"></a>t<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">500</span></span>
+<span id="cb33-2"><a href="第二章作业.html#cb33-2" tabindex="-1"></a>cs<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(t<span class="sc">+</span><span class="dv">15</span>)<span class="sc">/</span><span class="dv">50</span>) <span class="co">#signal</span></span>
+<span id="cb33-3"><a href="第二章作业.html#cb33-3" tabindex="-1"></a>w1<span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co">#noise</span></span>
+<span id="cb33-4"><a href="第二章作业.html#cb33-4" tabindex="-1"></a>w2<span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">1</span>) </span>
+<span id="cb33-5"><a href="第二章作业.html#cb33-5" tabindex="-1"></a>w3<span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">5</span>)</span>
+<span id="cb33-6"><a href="第二章作业.html#cb33-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb33-7"><a href="第二章作业.html#cb33-7" tabindex="-1"></a><span class="fu">acf1</span>(cs,     <span class="at">col=</span><span class="dv">4</span>,<span class="at">main=</span><span class="fu">expression</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(t<span class="sc">+</span><span class="dv">15</span>)<span class="sc">/</span><span class="dv">50</span>)))</span></code></pre></div>
+<pre><code>##  [1]  0.99  0.97  0.93  0.87  0.81  0.73  0.64  0.54  0.43  0.31  0.19  0.07
+## [13] -0.05 -0.17 -0.29 -0.40 -0.51 -0.61 -0.69 -0.77 -0.83 -0.88 -0.92 -0.94
+## [25] -0.95 -0.94 -0.92 -0.88 -0.83 -0.77 -0.69 -0.61 -0.51</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="第二章作业.html#cb35-1" tabindex="-1"></a><span class="fu">acf1</span>(cs<span class="sc">+</span>w,   <span class="at">col=</span><span class="dv">4</span>,<span class="at">main=</span><span class="fu">expression</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">+</span>(t<span class="sc">+</span><span class="dv">15</span>)<span class="sc">/</span><span class="dv">50</span><span class="sc">+</span><span class="fu">N</span>(<span class="dv">0</span>,<span class="dv">1</span>))))</span></code></pre></div>
+<pre><code>##  [1]  0.65  0.62  0.63  0.57  0.51  0.48  0.42  0.36  0.27  0.22  0.15  0.05
+## [13] -0.05 -0.07 -0.20 -0.27 -0.32 -0.40 -0.48 -0.49 -0.59 -0.59 -0.61 -0.65
+## [25] -0.62 -0.62 -0.63 -0.57 -0.56 -0.50 -0.45 -0.41 -0.36 -0.26</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="第二章作业.html#cb37-1" tabindex="-1"></a><span class="fu">acf1</span>(cs<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>w, <span class="at">col=</span><span class="dv">4</span>,<span class="at">main=</span><span class="fu">expression</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(t<span class="sc">+</span><span class="dv">15</span><span class="sc">/</span><span class="dv">50</span>)<span class="sc">+</span><span class="fu">N</span>(<span class="dv">0</span>,<span class="dv">5</span><span class="sc">^</span><span class="dv">2</span>))))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<pre><code>##  [1]  0.07  0.04  0.12  0.07  0.01  0.05  0.05  0.07 -0.01  0.06  0.07  0.03
+## [13] -0.04  0.10 -0.04 -0.04  0.01 -0.03 -0.11  0.01 -0.15 -0.06 -0.06 -0.12
+## [25] -0.04 -0.05 -0.11 -0.03 -0.08 -0.02 -0.02 -0.06 -0.10  0.00</code></pre>
+<p>方差越大样本的ACF越小。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="第一章作业.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="第三章作业.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-时间序列第二次作业.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
