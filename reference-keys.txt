@@ -18,7 +18,6 @@ fmri图像
 习题1.3
 习题1.4
 第二章作业
-load-package
 高斯白噪声序列
 a
 b
@@ -28,7 +27,6 @@ b-1
 ar模型
 信号加噪声模型
 第三章作业
-libs
 结构回归模型
 a-2
 b-2
@@ -59,7 +57,6 @@ lowess
 厄尔尼诺现象
 强生公司数据序列
 第四章作业
-libs-1
 ma1的acf
 白噪声过程
 a-7
@@ -91,3 +88,16 @@ g-1
 参数的mle
 ar1的高斯-牛顿算法
 预测误差
+第五章作业
+section
+section-1
+section-2
+section-3
+section-4
+section-5
+section-6
+section-7
+section-8
+section-9
+section-10
+section-11
