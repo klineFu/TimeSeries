@@ -1,0 +1,76 @@
+# 第二章作业
+
+## Libs {-}
+声明需要使用的包
+```{r}
+library(astsa)
+```
+
+## 2.11 高斯白噪声序列
+### 2.11 (a)
+和例 1.7 一样，模拟长度为 n = 500 的一个高斯白噪声序列，然后计算其滞后
+1 到 20 阶的样本 ACF，记作 $\hat{\rho}(h)$。把得到的结果与真实的 ACF 即 $\rho(h)$ 进行
+比较。
+```{r}
+w=rnorm(500)
+acf1(w,20)
+```
+
+### 2.11 (b)
+设 n = 50，重复（a）。长度 n 是如何影响结果的？
+```{r}
+w=rnorm(50)
+acf1(w,20)
+```
+长度 n 越长计算得到的ACF越小，得到的结果越准确。
+
+
+## 2.12 移动平均序列
+### 2.12 (a)
+和例 1.8 一样，模拟长度为 n = 500 的一个移动平均序列，然后计算其滞后 1
+到 20 阶样本 ACF 即 $\hat{\rho}(h)$。把得到的结果与真实的 ACF 即 $\rho(h)$ 进行
+比较。
+```{r}
+wa=rnorm(502,0,1)
+va=filter(wa,filter=rep(1/3.3))
+acf1(va,20)
+```
+
+### 2.12 (b)
+设 n = 50，重复（a）。长度 n 是如何影响结果的？
+```{r}
+wa=rnorm(52,0,1)
+va=stats::filter(wa,rep(1/3,3))
+acf1(va,20)
+```
+长度 n 越长计算得到的ACF越小，得到的结果越准确。
+
+
+## 2.13 AR模型
+模拟一个例 1.9 中给出的 AR 模型，模拟序列长度为 n = 500。然后绘制其滞后 1
+到 50 阶的样本 ACF。从样本 ACF 可以大致得到数据循环行为的什么结论？
+```{r}
+set.seed(90210)
+w=rnorm(500+50) # 50 extra to avoid startup problems
+x=filter(w,filter = c(1.5,-.75),method = "recursive")[-(1:50)]
+acf1(x,50)
+```
+随着样本ACF阶数的增加，ACF将逐渐收敛到0。
+
+## 2.14 信号加噪声模型
+4 模拟例 1.11 中给出的信号加噪声模型，其中（a）$\sigma_{w}$ = 0,（b）$\sigma_{w}$ = 1，（c）$\sigma_{w}$ = 5。模
+拟序列长度为 n = 500。然后绘制生成的这三个序列的滞后 1 到 100 阶的样本 ACF。
+从这三个序列的样本 ACF 可以大致得到数据循环行为的什么结论？
+```{r warning=FALSE}
+t=1:500
+cs=2*cos(2*pi*(t+15)/50) #signal
+w1= rnorm(500,0,0) #noise
+w2= rnorm(500,0,1) 
+w3= rnorm(500,0,5)
+par(mfrow=c(3,1))
+acf1(cs,     col=4,main=expression(2*cos(2*pi*(t+15)/50)))
+acf1(cs+w,   col=4,main=expression(2*cos(2*pi+(t+15)/50+N(0,1))))
+acf1(cs+5*w, col=4,main=expression(2*cos(2*pi*(t+15/50)+N(0,5^2))))
+```
+方差越大样本的ACF越小。
+
