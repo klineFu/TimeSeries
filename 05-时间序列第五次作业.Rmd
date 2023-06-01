@@ -1,0 +1,352 @@
+# 第五章作业
+
+
+## Libs {-}
+```{r}
+pacman::p_load(astsa,tidyverse,ggplot2,reshape2,forecast,grid)
+```
+
+## 5.1 冰川纹层数据与EWMA
+在$\lambda=0.25,0.50,0.75$的不同情况下计算EWMA，并且在同一图形上绘制EWMA和时间数据数据：
+```{r}
+x <- log(varve[1:100])
+x25 <- HoltWinters(x, alpha = 0.75, beta = FALSE, gamma = FALSE)
+x50 <- HoltWinters(x, alpha = 0.50, beta = FALSE, gamma = FALSE)
+x75 <- HoltWinters(x, alpha = 0.25, beta = FALSE, gamma = FALSE)
+
+x25_fit <- x25$fit[, 1]
+x50_fit <- x50$fit[, 1]
+x75_fit <- x75$fit[, 1]
+
+df <- data.frame(
+  x = seq_along(x)[1:length(x)-1],
+  y = x[1:length(x)-1],
+  x25 = x25_fit,
+  x50 = x50_fit,
+  x75 = x75_fit
+)
+
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_point(color = "black", shape = 1) +
+  geom_line(aes(y = y, color = "Original Data" ))+
+  geom_line(aes(y = x25, color = "0.25"), linetype = "solid") +
+  geom_line(aes(y = x50, color = "0.50"), linetype = "solid") +
+  geom_line(aes(y = x75, color = "0.75"), linetype = "solid") +
+  labs(ylab = "log(varve)") 
+```
+
+
+## 5.2 美国GDP序列分析
+首先，绘制GDP时间序列的时序图以及ACF和PACF：
+```{r}
+layout(1:2, heights=2:1)
+tsplot(gdp, col=4)
+acf2(gdp)
+```
+
+由于GDP数据具有明显的趋势性因此对数据进行一次差分，差分后再次绘制时序图：
+```{r}
+dev.new()
+tsplot(diff(log(gdp)), ylab="GNP Growth Rate", col=4)
+abline(h = mean(diff(log(gdp))), col=6)
+```
+
+对于差分后的数据，绘制其ACF与PACF：
+```{r}
+dev.new()
+acf2(diff(log(gdp)), main="")
+```
+
+对数据拟合不同的模型，观察不同模型的拟合情况：
+```{r}
+##
+sarima(diff(log(gdp)), 3,0,0) # AR(3) on growth rate
+sarima(diff(log(gdp)), 0,0,1) # MA(1) on growth rate
+
+round(ARMAtoMA(ar=.33, ma=0, 10), 3) # print psi-weights
+```
+
+- 从Ljung-Box统计量的检验结果来看，AR(3)模型也具有较好的残差性质。
+
+- 从AIC，AICc，BIC的角度看（越小越好），因此更加倾向于AR(3)模型。
+
+因此，综合考虑起来，对于差分后的数据选择模型AR(3)，那么对于原始数据，选择的模型为ARIMA(3,1,0)。
+
+## 5.3 原油数据分析
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(oil)
+tsplot(diff(oil))
+```
+
+其次，确定模型的阶数，按照题目要求，无需拟合含季节项的ARIMA模型：
+```{r}
+auto.arima(oil,seasonal = FALSE)
+acf2(diff(oil))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，考虑以下三种模型：
+```{r}
+sarima(oil,1,1,2)
+sarima(oil,0,1,3)
+sarima(oil,1,1,1)
+```
+
+
+
+## 5.4 陆地温度数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(gtemp_land)
+tsplot(diff(gtemp_land))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为ARIMA(0,1,1)。
+```{r}
+acf2(diff(gtemp_land))
+auto.arima(gtemp_land)
+```
+
+因此，可以拟合模型，并且进行检验:
+```{r}
+sarima(gtemp_land,0,1,1)
+```
+
+从Ljung-Box统计量的检验结果来看，模型也具有较好的残差性质。
+
+
+## 5.5 海洋温度数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(gtemp_ocean)
+tsplot(diff(gtemp_ocean))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为ARIMA(1,1,3)。
+```{r}
+auto.arima(gtemp_ocean)
+acf2(diff(gtemp_ocean))
+```
+
+因此，可以拟合模型，并且进行检验:
+```{r}
+sarima(gtemp_land,1,1,3)
+```
+
+从Ljung-Box统计量的检验结果来看，模型也具有较好的残差性质。
+
+
+## 5.6 二氧化硫序列
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(so2)
+tsplot(diff(so2))
+```
+
+其次，确定模型的阶数，按照题目要求，无需拟合含季节项的ARIMA模型：
+```{r}
+auto.arima(so2,seasonal = FALSE)
+acf2(diff(so2))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为ARIMA(1,1,2)。因此可以拟合模型并进行检验：
+```{r}
+sarima(so2,1,1,2)
+```
+
+因此，可以在中建立模型并且预测得到4个95%的预测区间：
+```{r}
+so2_model <- arima(so2, order = c(1, 1, 2))
+prediction <- predict(so2_model,n.ahead = 4,interval = "prediction", level = 0.95)
+
+lower_bound <- prediction$pred - 1.96 * prediction$se
+upper_bound <- prediction$pred + 1.96 * prediction$se
+
+prediction_interval <- cbind(lower_bound,prediction$pred,upper_bound)
+prediction_interval
+```
+
+
+## 5.7 国际航班乘客数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(AirPassengers)
+tsplot(diff(AirPassengers))
+```
+
+其次确定模型阶数：
+```{r}
+auto.arima(AirPassengers)
+acf2(diff(AirPassengers))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为SARIMA(2,1,1,0,1,0)[12]。因此可以拟合模型并进行检验：
+```{r}
+sarima(AirPassengers,2,1,1,0,1,0,12)
+```
+
+
+
+## 5.8 季节性ARIMA模型ACF的绘制
+```{r}
+ACF = ARMAacf(ar= .8, ma= .5 , 50)[-1]
+LAG=1:50/12
+plot(LAG,ACF,type="h",panel.first=Grid(),xlab = "LAG/12")
+abline(h=0)
+```
+
+
+## 5.9 鸡肉价格数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(chicken)
+tsplot(diff(chicken))
+```
+
+其次确定模型阶数：
+```{r}
+auto.arima(chicken)
+acf2(diff(chicken))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为SARIMA(2,1,1,0,0,1)[12]。因此可以拟合模型并进行检验：
+```{r}
+sarima(chicken,2,1,1,0,0,1,12)
+```
+
+利用拟合的季节性ARIMA模型预测未来12个月的鸡肉价格数据，并绘制在图中：
+```{r}
+# 拟合ARIMA模型
+chicken_model <- arima(chicken, order = c(2, 1, 1),
+                       seasonal = list(order = c(0, 0, 1), period = 12))
+
+# 对未来12个月进行预测
+chicken_forecast <- predict(chicken_model, n.ahead = 12)
+
+# 打印预测结果
+print(chicken_forecast$pred)
+
+# 绘制原始数据和预测结果的图形
+plot(chicken, type = "l", xlab = "时间", ylab = "销售量", main = "Chicken Sales")
+lines(chicken_forecast$pred, col = "red")
+legend("topleft", legend = c("原始数据", "预测结果"), col = c("black", "red"), lty = c(1, 1))
+```
+
+
+## 5.10 失业数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(UnempRate)
+tsplot(diff(UnempRate))
+```
+
+其次确定模型阶数：
+```{r}
+auto.arima(UnempRate)
+acf2(diff(UnempRate))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为SARIMA(4,0,2,2,1,2)[12]，因此可以拟合模型并进行检验：
+```{r}
+sarima(UnempRate,4,0,2,2,1,2,12)
+```
+
+利用拟合的季节性ARIMA模型预测未来12个月的失业数据，并绘制在图中：
+```{r}
+# 拟合ARIMA模型
+UnempRate_model <- arima(UnempRate, order = c(4, 0, 2),
+                       seasonal = list(order = c(2, 1, 2), period = 12))
+
+# 对未来12个月进行预测
+UnempRate_forecast <- predict(UnempRate_model, n.ahead = 12)
+
+# 打印预测结果
+print(UnempRate_forecast$pred)
+
+# 绘制原始数据和预测结果的图形
+plot(UnempRate, type = "l", xlab = "时间", ylab = "销售量", main = "UnempRate")
+lines(UnempRate_forecast$pred, col = "red")
+legend("topleft", legend = c("原始数据", "预测结果"), col = c("black", "red"), lty = c(1, 1))
+```
+
+
+
+## 5.11 美国出生数据
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(birth)
+tsplot(diff(birth))
+```
+
+其次确定模型阶数：
+```{r}
+auto.arima(birth)
+acf2(diff(birth))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为SARIMA(0,1,2,1,1,1)[12]，因此可以拟合模型并进行检验：
+```{r}
+sarima(birth,0,1,2,1,1,1,12)
+```
+
+利用拟合的季节性ARIMA模型预测未来12个月的出生数据，并绘制在图中：
+```{r}
+# 拟合ARIMA模型
+birth_model <- arima(birth, order = c(0, 1, 2),
+                       seasonal = list(order = c(1, 1, 1), period = 12))
+
+# 对未来12个月进行预测
+birth_forecast <- predict(birth_model, n.ahead = 12)
+
+# 打印预测结果
+print(birth_forecast$pred)
+
+# 绘制原始数据和预测结果的图形
+plot(birth, type = "l", xlab = "时间", ylab = "出生率", main = "birth")
+lines(birth_forecast$pred, col = "red")
+legend("topleft", legend = c("原始数据", "预测结果"), col = c("black", "red"), lty = c(1, 1))
+```
+
+
+
+## 5.12 强生公司收益率
+绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+```{r}
+tsplot(log(jj))
+tsplot(diff(log(jj)))
+```
+
+其次确定模型阶数：
+```{r}
+auto.arima(log(jj))
+acf2(diff(log(jj)))
+```
+
+根据ACF、PACF的绘图结果，以及函数`auto.arima`得到的结果，可以选择模型为SARIMA(2,2,0,1,1,0)[4]，因此可以拟合模型并进行检验：
+```{r}
+sarima(log(jj),2,0,0,1,1,0,4)
+```
+
+利用拟合的季节性ARIMA模型预测未来4个季度的收益率，并绘制在图中：
+```{r}
+# 拟合ARIMA模型
+logjj_model <- arima(log(jj), order = c(2, 2, 0),
+                       seasonal = list(order = c(1, 1, 0), period = 4))
+
+# 对未来12个月进行预测
+logjj_forecast <- predict(logjj_model, n.ahead = 4)
+
+# 打印预测结果
+print(logjj_forecast$pred)
+
+# 绘制原始数据和预测结果的图形
+plot(log(jj), type = "l", xlab = "时间", ylab = "收益率", main = "jj")
+lines(logjj_forecast$pred, col = "red")
+legend("topleft", legend = c("原始数据", "预测结果"), col = c("black", "red"), lty = c(1, 1))
+```
+
+
+
+
+
