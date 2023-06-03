@@ -316,44 +316,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> 第五章作业<a href="第五章作业.html#第五章作业" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="libs-3" class="section level2 unnumbered hasAnchor">
 <h2>Libs<a href="第五章作业.html#libs-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="第五章作业.html#cb144-1" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(astsa,tidyverse,ggplot2,reshape2,forecast,grid)</span></code></pre></div>
 </div>
 <div id="冰川纹层数据与ewma" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> 5.1 冰川纹层数据与EWMA<a href="第五章作业.html#冰川纹层数据与ewma" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>在<span class="math inline">\(\lambda=0.25,0.50,0.75\)</span>的不同情况下计算EWMA，并且在同一图形上绘制EWMA和时间数据数据：</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="第五章作业.html#cb145-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">log</span>(varve[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>])</span>
-<span id="cb145-2"><a href="第五章作业.html#cb145-2" tabindex="-1"></a>x25 <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(x, <span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">beta =</span> <span class="cn">FALSE</span>, <span class="at">gamma =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb145-3"><a href="第五章作业.html#cb145-3" tabindex="-1"></a>x50 <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(x, <span class="at">alpha =</span> <span class="fl">0.50</span>, <span class="at">beta =</span> <span class="cn">FALSE</span>, <span class="at">gamma =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb145-4"><a href="第五章作业.html#cb145-4" tabindex="-1"></a>x75 <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(x, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">beta =</span> <span class="cn">FALSE</span>, <span class="at">gamma =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb145-5"><a href="第五章作业.html#cb145-5" tabindex="-1"></a></span>
-<span id="cb145-6"><a href="第五章作业.html#cb145-6" tabindex="-1"></a>x25_fit <span class="ot">&lt;-</span> x25<span class="sc">$</span>fit[, <span class="dv">1</span>]</span>
-<span id="cb145-7"><a href="第五章作业.html#cb145-7" tabindex="-1"></a>x50_fit <span class="ot">&lt;-</span> x50<span class="sc">$</span>fit[, <span class="dv">1</span>]</span>
-<span id="cb145-8"><a href="第五章作业.html#cb145-8" tabindex="-1"></a>x75_fit <span class="ot">&lt;-</span> x75<span class="sc">$</span>fit[, <span class="dv">1</span>]</span>
-<span id="cb145-9"><a href="第五章作业.html#cb145-9" tabindex="-1"></a></span>
-<span id="cb145-10"><a href="第五章作业.html#cb145-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb145-11"><a href="第五章作业.html#cb145-11" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq_along</span>(x)[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb145-12"><a href="第五章作业.html#cb145-12" tabindex="-1"></a>  <span class="at">y =</span> x[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb145-13"><a href="第五章作业.html#cb145-13" tabindex="-1"></a>  <span class="at">x25 =</span> x25_fit,</span>
-<span id="cb145-14"><a href="第五章作业.html#cb145-14" tabindex="-1"></a>  <span class="at">x50 =</span> x50_fit,</span>
-<span id="cb145-15"><a href="第五章作业.html#cb145-15" tabindex="-1"></a>  <span class="at">x75 =</span> x75_fit</span>
-<span id="cb145-16"><a href="第五章作业.html#cb145-16" tabindex="-1"></a>)</span>
-<span id="cb145-17"><a href="第五章作业.html#cb145-17" tabindex="-1"></a></span>
-<span id="cb145-18"><a href="第五章作业.html#cb145-18" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb145-19"><a href="第五章作业.html#cb145-19" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb145-20"><a href="第五章作业.html#cb145-20" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">color =</span> <span class="st">&quot;Original Data&quot;</span> ))<span class="sc">+</span></span>
-<span id="cb145-21"><a href="第五章作业.html#cb145-21" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x25, <span class="at">color =</span> <span class="st">&quot;0.25&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-22"><a href="第五章作业.html#cb145-22" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x50, <span class="at">color =</span> <span class="st">&quot;0.50&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-23"><a href="第五章作业.html#cb145-23" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x75, <span class="at">color =</span> <span class="st">&quot;0.75&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-24"><a href="第五章作业.html#cb145-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">ylab =</span> <span class="st">&quot;log(varve)&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p>在<span class="math inline">\(\lambda=0.25,0.50,0.75\)</span>的不同情况下计算EWMA，并且在同一图形上绘制EWMA和时间数据数据：
+<img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 </div>
 <div id="美国gdp序列分析" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> 5.2 美国GDP序列分析<a href="第五章作业.html#美国gdp序列分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>首先，绘制GDP时间序列的时序图以及ACF和PACF：</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="第五章作业.html#cb146-1" tabindex="-1"></a><span class="fu">layout</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">heights=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb146-2"><a href="第五章作业.html#cb146-2" tabindex="-1"></a><span class="fu">tsplot</span>(gdp, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb146-3"><a href="第五章作业.html#cb146-3" tabindex="-1"></a><span class="fu">acf2</span>(gdp)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-77-2.png" width="672" /></p>
+<p>首先，绘制GDP时间序列的时序图以及ACF和PACF：
+<img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-77-2.png" width="672" /></p>
 <pre><code>##      [,1] [,2] [,3]  [,4] [,5] [,6] [,7]  [,8]  [,9] [,10] [,11] [,12] [,13]
 ## ACF  0.99 0.98 0.97  0.96 0.95 0.94 0.93  0.92  0.91  0.90  0.89  0.88  0.87
 ## PACF 0.99 0.00 0.00 -0.01 0.00 0.00 0.00 -0.01 -0.01 -0.01 -0.01 -0.01 -0.01
@@ -364,12 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF   0.74  0.73
 ## PACF -0.01 -0.01</code></pre>
 <p>由于GDP数据具有明显的趋势性因此对数据进行一次差分，差分后再次绘制时序图：</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="第五章作业.html#cb148-1" tabindex="-1"></a><span class="fu">dev.new</span>()</span>
-<span id="cb148-2"><a href="第五章作业.html#cb148-2" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(<span class="fu">log</span>(gdp)), <span class="at">ylab=</span><span class="st">&quot;GNP Growth Rate&quot;</span>, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb148-3"><a href="第五章作业.html#cb148-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(<span class="fu">diff</span>(<span class="fu">log</span>(gdp))), <span class="at">col=</span><span class="dv">6</span>)</span></code></pre></div>
 <p>对于差分后的数据，绘制其ACF与PACF：</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="第五章作业.html#cb149-1" tabindex="-1"></a><span class="fu">dev.new</span>()</span>
-<span id="cb149-2"><a href="第五章作业.html#cb149-2" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(<span class="fu">log</span>(gdp)), <span class="at">main=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8] [,9] [,10] [,11] [,12] [,13]
 ## ACF  0.36 0.23  0.02 -0.06 -0.13 -0.03 -0.04 -0.01 0.08  0.10  0.02 -0.11 -0.11
 ## PACF 0.36 0.11 -0.11 -0.07 -0.08  0.07 -0.02 -0.02 0.10  0.04 -0.07 -0.16 -0.02
@@ -380,8 +347,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF   0.03  0.06
 ## PACF -0.04  0.03</code></pre>
 <p>对数据拟合不同的模型，观察不同模型的拟合情况：</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="第五章作业.html#cb151-1" tabindex="-1"></a><span class="do">##</span></span>
-<span id="cb151-2"><a href="第五章作业.html#cb151-2" tabindex="-1"></a><span class="fu">sarima</span>(<span class="fu">diff</span>(<span class="fu">log</span>(gdp)), <span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co"># AR(3) on growth rate</span></span></code></pre></div>
 <pre><code>## initial  value -4.672826 
 ## iter   2 value -4.735845
 ## iter   3 value -4.756484
@@ -434,7 +399,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $BIC
 ## [1] -6.573189</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="第五章作业.html#cb154-1" tabindex="-1"></a><span class="fu">sarima</span>(<span class="fu">diff</span>(<span class="fu">log</span>(gdp)), <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># MA(1) on growth rate</span></span></code></pre></div>
 <pre><code>## initial  value -4.672758 
 ## iter   2 value -4.716609
 ## iter   3 value -4.723220
@@ -479,7 +443,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $BIC
 ## [1] -6.549682</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="第五章作业.html#cb157-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">ARMAtoMA</span>(<span class="at">ar=</span>.<span class="dv">33</span>, <span class="at">ma=</span><span class="dv">0</span>, <span class="dv">10</span>), <span class="dv">3</span>) <span class="co"># print psi-weights</span></span></code></pre></div>
 <pre><code>##  [1] 0.330 0.109 0.036 0.012 0.004 0.001 0.000 0.000 0.000 0.000</code></pre>
 <ul>
 <li><p>从Ljung-Box统计量的检验结果来看，AR(3)模型也具有较好的残差性质。</p></li>
@@ -489,13 +452,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="原油数据分析" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> 5.3 原油数据分析<a href="第五章作业.html#原油数据分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="第五章作业.html#cb159-1" tabindex="-1"></a><span class="fu">tsplot</span>(oil)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="第五章作业.html#cb160-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(oil))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-81-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-81-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-81-2.png" width="672" /></p>
 <p>其次，确定模型的阶数，按照题目要求，无需拟合含季节项的ARIMA模型：</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="第五章作业.html#cb161-1" tabindex="-1"></a><span class="fu">auto.arima</span>(oil,<span class="at">seasonal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## Series: oil 
 ## ARIMA(1,1,2) 
 ## 
@@ -506,7 +465,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 6.431:  log likelihood = -1276.68
 ## AIC=2561.35   AICc=2561.43   BIC=2578.55</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="第五章作业.html#cb163-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(oil))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
 ## ACF  0.18 0.06 0.11 0.05 0.08 0.04 0.03 0.19 0.09  0.07  0.08  0.04 -0.04  0.05
@@ -566,7 +524,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF    0.01   0.02   0.00   0.00  -0.04   0.00   0.05   0.03   0.04   0.02
 ## PACF  -0.01  -0.01   0.01  -0.01  -0.04  -0.01   0.05   0.00   0.03   0.00</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，考虑以下三种模型：</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="第五章作业.html#cb165-1" tabindex="-1"></a><span class="fu">sarima</span>(oil,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.952571 
 ## iter   2 value 0.942301
 ## iter   3 value 0.937016
@@ -642,7 +599,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $BIC
 ## [1] 4.751366</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="第五章作业.html#cb168-1" tabindex="-1"></a><span class="fu">sarima</span>(oil,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.951657 
 ## iter   2 value 0.932292
 ## iter   3 value 0.931893
@@ -694,7 +650,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $BIC
 ## [1] 4.75959</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="第五章作业.html#cb171-1" tabindex="-1"></a><span class="fu">sarima</span>(oil,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.952571 
 ## iter   2 value 0.942681
 ## iter   3 value 0.937165
@@ -774,21 +729,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="陆地温度数据" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 5.4 陆地温度数据<a href="第五章作业.html#陆地温度数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="第五章作业.html#cb174-1" tabindex="-1"></a><span class="fu">tsplot</span>(gtemp_land)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="第五章作业.html#cb175-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(gtemp_land))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-84-2.png" width="672" /></p>
-<p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为ARIMA(0,1,1)。</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="第五章作业.html#cb176-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(gtemp_land))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-84-2.png" width="672" /></p>
+<p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为ARIMA(0,1,1)。
+<img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7] [,8]  [,9] [,10] [,11] [,12]
 ## ACF  -0.41 -0.01 -0.17  0.18 -0.08 -0.01 -0.02 0.13 -0.16  0.17 -0.09  0.02
 ## PACF -0.41 -0.22 -0.33 -0.08 -0.11 -0.13 -0.10 0.05 -0.13  0.11  0.05 -0.01
 ##      [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22]
 ## ACF  -0.05  0.03  0.06 -0.10  0.04  0.08 -0.14  0.12 -0.08  0.15
 ## PACF  0.03 -0.02  0.07 -0.05  0.01  0.09 -0.10  0.07  0.00  0.13</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="第五章作业.html#cb178-1" tabindex="-1"></a><span class="fu">auto.arima</span>(gtemp_land)</span></code></pre></div>
 <pre><code>## Series: gtemp_land 
 ## ARIMA(0,1,1) with drift 
 ## 
@@ -800,7 +750,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sigma^2 = 0.03049:  log likelihood = 46.68
 ## AIC=-87.35   AICc=-87.18   BIC=-78.51</code></pre>
 <p>因此，可以拟合模型，并且进行检验:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="第五章作业.html#cb180-1" tabindex="-1"></a><span class="fu">sarima</span>(gtemp_land,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## initial  value -1.579037 
 ## iter   2 value -1.707300
 ## iter   3 value -1.730190
@@ -858,13 +807,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="海洋温度数据" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> 5.5 海洋温度数据<a href="第五章作业.html#海洋温度数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="第五章作业.html#cb183-1" tabindex="-1"></a><span class="fu">tsplot</span>(gtemp_ocean)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="第五章作业.html#cb184-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(gtemp_ocean))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-87-2.png" width="672" /></p>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为ARIMA(1,1,3)。</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="第五章作业.html#cb185-1" tabindex="-1"></a><span class="fu">auto.arima</span>(gtemp_ocean)</span></code></pre></div>
 <pre><code>## Series: gtemp_ocean 
 ## ARIMA(1,1,3) 
 ## 
@@ -875,7 +820,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 0.007738:  log likelihood = 144.29
 ## AIC=-278.59   AICc=-278.14   BIC=-263.84</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="第五章作业.html#cb187-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(gtemp_ocean))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7] [,8]  [,9] [,10] [,11] [,12]
 ## ACF  -0.04 -0.44  0.01  0.14 -0.06 -0.07  0.03 0.05 -0.11  0.05  0.04 -0.07
@@ -884,7 +828,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF  -0.06  0.09 -0.03 -0.05 -0.03  0.18  0.06 -0.12  0.05  0.03
 ## PACF -0.07  0.03 -0.10 -0.01 -0.10  0.16  0.05  0.03  0.13 -0.03</code></pre>
 <p>因此，可以拟合模型，并且进行检验:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="第五章作业.html#cb189-1" tabindex="-1"></a><span class="fu">sarima</span>(gtemp_land,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## initial  value -1.578713 
 ## iter   2 value -1.703207
 ## iter   3 value -1.717012
@@ -964,13 +907,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="二氧化硫序列" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> 5.6 二氧化硫序列<a href="第五章作业.html#二氧化硫序列" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="第五章作业.html#cb192-1" tabindex="-1"></a><span class="fu">tsplot</span>(so2)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="第五章作业.html#cb193-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(so2))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-90-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-90-2.png" width="672" /></p>
 <p>其次，确定模型的阶数，按照题目要求，无需拟合含季节项的ARIMA模型：</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="第五章作业.html#cb194-1" tabindex="-1"></a><span class="fu">auto.arima</span>(so2,<span class="at">seasonal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## Series: so2 
 ## ARIMA(1,1,2) 
 ## 
@@ -981,7 +920,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 0.7809:  log likelihood = -655.81
 ## AIC=1319.63   AICc=1319.71   BIC=1336.54</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="第五章作业.html#cb196-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(so2))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
 ## ACF  -0.54  0.13 -0.15  0.09 -0.02  0.00 -0.03  0.05 -0.05  0.09 -0.11  0.03
@@ -1044,7 +982,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF    0.04
 ## PACF  -0.01</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为ARIMA(1,1,2)。因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="第五章作业.html#cb198-1" tabindex="-1"></a><span class="fu">sarima</span>(so2,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.161610 
 ## iter   2 value 0.012216
 ## iter   3 value -0.095221
@@ -1123,14 +1060,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $BIC
 ## [1] 2.64821</code></pre>
 <p>因此，可以在中建立模型并且预测得到4个95%的预测区间：</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="第五章作业.html#cb201-1" tabindex="-1"></a>so2_model <span class="ot">&lt;-</span> <span class="fu">arima</span>(so2, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb201-2"><a href="第五章作业.html#cb201-2" tabindex="-1"></a>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(so2_model,<span class="at">n.ahead =</span> <span class="dv">4</span>,<span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb201-3"><a href="第五章作业.html#cb201-3" tabindex="-1"></a></span>
-<span id="cb201-4"><a href="第五章作业.html#cb201-4" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> prediction<span class="sc">$</span>pred <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> prediction<span class="sc">$</span>se</span>
-<span id="cb201-5"><a href="第五章作业.html#cb201-5" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> prediction<span class="sc">$</span>pred <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> prediction<span class="sc">$</span>se</span>
-<span id="cb201-6"><a href="第五章作业.html#cb201-6" tabindex="-1"></a></span>
-<span id="cb201-7"><a href="第五章作业.html#cb201-7" tabindex="-1"></a>prediction_interval <span class="ot">&lt;-</span> <span class="fu">cbind</span>(lower_bound,prediction<span class="sc">$</span>pred,upper_bound)</span>
-<span id="cb201-8"><a href="第五章作业.html#cb201-8" tabindex="-1"></a>prediction_interval</span></code></pre></div>
 <pre><code>## Time Series:
 ## Start = c(1979, 41) 
 ## End = c(1979, 44) 
@@ -1143,13 +1072,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="国际航班乘客数据" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> 5.7 国际航班乘客数据<a href="第五章作业.html#国际航班乘客数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="第五章作业.html#cb203-1" tabindex="-1"></a><span class="fu">tsplot</span>(AirPassengers)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="第五章作业.html#cb204-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(AirPassengers))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-94-2.png" width="672" /></p>
 <p>其次确定模型阶数：</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="第五章作业.html#cb205-1" tabindex="-1"></a><span class="fu">auto.arima</span>(AirPassengers)</span></code></pre></div>
 <pre><code>## Series: AirPassengers 
 ## ARIMA(2,1,1)(0,1,0)[12] 
 ## 
@@ -1160,7 +1085,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 132.3:  log likelihood = -504.92
 ## AIC=1017.85   AICc=1018.17   BIC=1029.35</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="第五章作业.html#cb207-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(AirPassengers))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <pre><code>##      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
 ## ACF   0.3 -0.10 -0.24 -0.30 -0.09 -0.08 -0.09 -0.29 -0.19 -0.10  0.28  0.83
@@ -1175,7 +1099,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF   0.23 -0.11 -0.13 -0.12 -0.05 -0.03 -0.08 -0.23 -0.14 -0.03  0.15  0.49
 ## PACF  0.00 -0.08  0.09 -0.01  0.03  0.02 -0.02  0.00  0.05  0.00  0.00  0.02</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为SARIMA(2,1,1,0,1,0)[12]。因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="第五章作业.html#cb209-1" tabindex="-1"></a><span class="fu">sarima</span>(AirPassengers,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## initial  value 2.517519 
 ## iter   2 value 2.509697
 ## iter   3 value 2.467921
@@ -1293,21 +1216,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="季节性arima模型acf的绘制" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> 5.8 季节性ARIMA模型ACF的绘制<a href="第五章作业.html#季节性arima模型acf的绘制" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="第五章作业.html#cb212-1" tabindex="-1"></a>ACF <span class="ot">=</span> <span class="fu">ARMAacf</span>(<span class="at">ar=</span> .<span class="dv">8</span>, <span class="at">ma=</span> .<span class="dv">5</span> , <span class="dv">50</span>)[<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb212-2"><a href="第五章作业.html#cb212-2" tabindex="-1"></a>LAG<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span><span class="sc">/</span><span class="dv">12</span></span>
-<span id="cb212-3"><a href="第五章作业.html#cb212-3" tabindex="-1"></a><span class="fu">plot</span>(LAG,ACF,<span class="at">type=</span><span class="st">&quot;h&quot;</span>,<span class="at">panel.first=</span><span class="fu">Grid</span>(),<span class="at">xlab =</span> <span class="st">&quot;LAG/12&quot;</span>)</span>
-<span id="cb212-4"><a href="第五章作业.html#cb212-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 </div>
 <div id="鸡肉价格数据" class="section level2 hasAnchor" number="5.9">
 <h2><span class="header-section-number">5.9</span> 5.9 鸡肉价格数据<a href="第五章作业.html#鸡肉价格数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="第五章作业.html#cb213-1" tabindex="-1"></a><span class="fu">tsplot</span>(chicken)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="第五章作业.html#cb214-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(chicken))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
 <p>其次确定模型阶数：</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="第五章作业.html#cb215-1" tabindex="-1"></a><span class="fu">auto.arima</span>(chicken)</span></code></pre></div>
 <pre><code>## Series: chicken 
 ## ARIMA(2,1,1)(0,0,1)[12] with drift 
 ## 
@@ -1318,7 +1233,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 0.396:  log likelihood = -169.51
 ## AIC=351.01   AICc=351.5   BIC=370.14</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="第五章作业.html#cb217-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(chicken))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <pre><code>##      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
 ## ACF  0.72  0.39  0.09 -0.07 -0.16 -0.20 -0.27 -0.23 -0.11  0.09  0.26  0.33
@@ -1333,7 +1247,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF   0.26  0.13 -0.02 -0.14 -0.23 -0.21 -0.18 -0.11 -0.03  0.08  0.21  0.33
 ## PACF -0.12  0.01 -0.01 -0.05  0.02  0.12 -0.05 -0.13 -0.07  0.01  0.14  0.05</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为SARIMA(2,1,1,0,0,1)[12]。因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="第五章作业.html#cb219-1" tabindex="-1"></a><span class="fu">sarima</span>(chicken,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.001863 
 ## iter   2 value -0.186345
 ## iter   3 value -0.335095
@@ -1410,36 +1323,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $BIC
 ## [1] 2.067808</code></pre>
 <p>利用拟合的季节性ARIMA模型预测未来12个月的鸡肉价格数据，并绘制在图中：</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="第五章作业.html#cb222-1" tabindex="-1"></a><span class="co"># 拟合ARIMA模型</span></span>
-<span id="cb222-2"><a href="第五章作业.html#cb222-2" tabindex="-1"></a>chicken_model <span class="ot">&lt;-</span> <span class="fu">arima</span>(chicken, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb222-3"><a href="第五章作业.html#cb222-3" tabindex="-1"></a>                       <span class="at">seasonal =</span> <span class="fu">list</span>(<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="at">period =</span> <span class="dv">12</span>))</span>
-<span id="cb222-4"><a href="第五章作业.html#cb222-4" tabindex="-1"></a></span>
-<span id="cb222-5"><a href="第五章作业.html#cb222-5" tabindex="-1"></a><span class="co"># 对未来12个月进行预测</span></span>
-<span id="cb222-6"><a href="第五章作业.html#cb222-6" tabindex="-1"></a>chicken_forecast <span class="ot">&lt;-</span> <span class="fu">predict</span>(chicken_model, <span class="at">n.ahead =</span> <span class="dv">12</span>)</span>
-<span id="cb222-7"><a href="第五章作业.html#cb222-7" tabindex="-1"></a></span>
-<span id="cb222-8"><a href="第五章作业.html#cb222-8" tabindex="-1"></a><span class="co"># 打印预测结果</span></span>
-<span id="cb222-9"><a href="第五章作业.html#cb222-9" tabindex="-1"></a><span class="fu">print</span>(chicken_forecast<span class="sc">$</span>pred)</span></code></pre></div>
 <pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
 ## 2016                                                                111.1064
 ## 2017 109.8361 109.7608 109.5932 109.5923 109.6591 109.6571 109.5903         
 ##           Sep      Oct      Nov      Dec
 ## 2016 110.7519 110.3998 110.0911 110.0052
 ## 2017</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="第五章作业.html#cb224-1" tabindex="-1"></a><span class="co"># 绘制原始数据和预测结果的图形</span></span>
-<span id="cb224-2"><a href="第五章作业.html#cb224-2" tabindex="-1"></a><span class="fu">plot</span>(chicken, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;时间&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;销售量&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Chicken Sales&quot;</span>)</span>
-<span id="cb224-3"><a href="第五章作业.html#cb224-3" tabindex="-1"></a><span class="fu">lines</span>(chicken_forecast<span class="sc">$</span>pred, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb224-4"><a href="第五章作业.html#cb224-4" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;原始数据&quot;</span>, <span class="st">&quot;预测结果&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 </div>
 <div id="失业数据" class="section level2 hasAnchor" number="5.10">
 <h2><span class="header-section-number">5.10</span> 5.10 失业数据<a href="第五章作业.html#失业数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="第五章作业.html#cb225-1" tabindex="-1"></a><span class="fu">tsplot</span>(UnempRate)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="第五章作业.html#cb226-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(UnempRate))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
 <p>其次确定模型阶数：</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="第五章作业.html#cb227-1" tabindex="-1"></a><span class="fu">auto.arima</span>(UnempRate)</span></code></pre></div>
 <pre><code>## Series: UnempRate 
 ## ARIMA(4,0,2)(2,1,2)[12] 
 ## 
@@ -1453,7 +1349,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 0.05468:  log likelihood = 26.25
 ## AIC=-30.49   AICc=-30.16   BIC=21.24</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="第五章作业.html#cb229-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(UnempRate))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <pre><code>##      [,1]  [,2]  [,3]  [,4] [,5]  [,6] [,7]  [,8]  [,9] [,10] [,11] [,12] [,13]
 ## ACF  0.08 -0.12 -0.28 -0.09 0.24 -0.03 0.21 -0.11 -0.31 -0.17  0.06  0.76  0.03
@@ -1468,7 +1363,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF  -0.16 -0.31 -0.11  0.18 -0.06  0.19 -0.14 -0.31 -0.17  0.05  0.73
 ## PACF  0.03 -0.04 -0.05 -0.10 -0.03 -0.03 -0.03 -0.05 -0.02  0.04  0.17</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为SARIMA(4,0,2,2,1,2)[12]，因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="第五章作业.html#cb231-1" tabindex="-1"></a><span class="fu">sarima</span>(UnempRate,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## initial  value 0.137272 
 ## iter   2 value -0.866854
 ## iter   3 value -1.027240
@@ -1643,38 +1537,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $BIC
 ## [1] 0.03405642</code></pre>
 <p>利用拟合的季节性ARIMA模型预测未来12个月的失业数据，并绘制在图中：</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="第五章作业.html#cb234-1" tabindex="-1"></a><span class="co"># 拟合ARIMA模型</span></span>
-<span id="cb234-2"><a href="第五章作业.html#cb234-2" tabindex="-1"></a>UnempRate_model <span class="ot">&lt;-</span> <span class="fu">arima</span>(UnempRate, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">2</span>),</span>
-<span id="cb234-3"><a href="第五章作业.html#cb234-3" tabindex="-1"></a>                       <span class="at">seasonal =</span> <span class="fu">list</span>(<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">period =</span> <span class="dv">12</span>))</span></code></pre></div>
 <pre><code>## Warning in log(s2): NaNs produced
 
 ## Warning in log(s2): NaNs produced</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="第五章作业.html#cb236-1" tabindex="-1"></a><span class="co"># 对未来12个月进行预测</span></span>
-<span id="cb236-2"><a href="第五章作业.html#cb236-2" tabindex="-1"></a>UnempRate_forecast <span class="ot">&lt;-</span> <span class="fu">predict</span>(UnempRate_model, <span class="at">n.ahead =</span> <span class="dv">12</span>)</span>
-<span id="cb236-3"><a href="第五章作业.html#cb236-3" tabindex="-1"></a></span>
-<span id="cb236-4"><a href="第五章作业.html#cb236-4" tabindex="-1"></a><span class="co"># 打印预测结果</span></span>
-<span id="cb236-5"><a href="第五章作业.html#cb236-5" tabindex="-1"></a><span class="fu">print</span>(UnempRate_forecast<span class="sc">$</span>pred)</span></code></pre></div>
 <pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
 ## 2016                                                                        
 ## 2017 5.188054 5.064098 4.909005 4.449382 4.585190 5.086002 5.217041 5.042381
 ##           Sep      Oct      Nov      Dec
 ## 2016                            4.477900
 ## 2017 4.824391 4.785977 4.735790</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="第五章作业.html#cb238-1" tabindex="-1"></a><span class="co"># 绘制原始数据和预测结果的图形</span></span>
-<span id="cb238-2"><a href="第五章作业.html#cb238-2" tabindex="-1"></a><span class="fu">plot</span>(UnempRate, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;时间&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;销售量&quot;</span>, <span class="at">main =</span> <span class="st">&quot;UnempRate&quot;</span>)</span>
-<span id="cb238-3"><a href="第五章作业.html#cb238-3" tabindex="-1"></a><span class="fu">lines</span>(UnempRate_forecast<span class="sc">$</span>pred, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb238-4"><a href="第五章作业.html#cb238-4" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;原始数据&quot;</span>, <span class="st">&quot;预测结果&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 </div>
 <div id="美国出生数据" class="section level2 hasAnchor" number="5.11">
 <h2><span class="header-section-number">5.11</span> 5.11 美国出生数据<a href="第五章作业.html#美国出生数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="第五章作业.html#cb239-1" tabindex="-1"></a><span class="fu">tsplot</span>(birth)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="第五章作业.html#cb240-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(birth))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
 <p>其次确定模型阶数：</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="第五章作业.html#cb241-1" tabindex="-1"></a><span class="fu">auto.arima</span>(birth)</span></code></pre></div>
 <pre><code>## Series: birth 
 ## ARIMA(0,1,2)(1,1,1)[12] 
 ## 
@@ -1685,7 +1563,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 46.1:  log likelihood = -1204.93
 ## AIC=2419.86   AICc=2420.03   BIC=2439.29</code></pre>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="第五章作业.html#cb243-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(birth))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <pre><code>##       [,1] [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
 ## ACF  -0.32 0.16 -0.08 -0.19  0.09 -0.28  0.06 -0.19 -0.05  0.17 -0.26  0.82
@@ -1700,7 +1577,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF  -0.23  0.16 -0.08 -0.15  0.05 -0.25  0.06 -0.18 -0.03  0.15 -0.22  0.72
 ## PACF  0.08 -0.10 -0.03  0.07 -0.04  0.06  0.04 -0.07 -0.06  0.02 -0.04  0.10</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为SARIMA(0,1,2,1,1,1)[12]，因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="第五章作业.html#cb245-1" tabindex="-1"></a><span class="fu">sarima</span>(birth,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## initial  value 2.221461 
 ## iter   2 value 1.995611
 ## iter   3 value 1.959402
@@ -1759,36 +1635,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $BIC
 ## [1] 6.775816</code></pre>
 <p>利用拟合的季节性ARIMA模型预测未来12个月的出生数据，并绘制在图中：</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="第五章作业.html#cb248-1" tabindex="-1"></a><span class="co"># 拟合ARIMA模型</span></span>
-<span id="cb248-2"><a href="第五章作业.html#cb248-2" tabindex="-1"></a>birth_model <span class="ot">&lt;-</span> <span class="fu">arima</span>(birth, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb248-3"><a href="第五章作业.html#cb248-3" tabindex="-1"></a>                       <span class="at">seasonal =</span> <span class="fu">list</span>(<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="at">period =</span> <span class="dv">12</span>))</span>
-<span id="cb248-4"><a href="第五章作业.html#cb248-4" tabindex="-1"></a></span>
-<span id="cb248-5"><a href="第五章作业.html#cb248-5" tabindex="-1"></a><span class="co"># 对未来12个月进行预测</span></span>
-<span id="cb248-6"><a href="第五章作业.html#cb248-6" tabindex="-1"></a>birth_forecast <span class="ot">&lt;-</span> <span class="fu">predict</span>(birth_model, <span class="at">n.ahead =</span> <span class="dv">12</span>)</span>
-<span id="cb248-7"><a href="第五章作业.html#cb248-7" tabindex="-1"></a></span>
-<span id="cb248-8"><a href="第五章作业.html#cb248-8" tabindex="-1"></a><span class="co"># 打印预测结果</span></span>
-<span id="cb248-9"><a href="第五章作业.html#cb248-9" tabindex="-1"></a><span class="fu">print</span>(birth_forecast<span class="sc">$</span>pred)</span></code></pre></div>
 <pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
 ## 1979          258.2476 281.8175 263.3480 274.2731 270.5819 294.9579 302.9556
 ## 1980 275.9505                                                               
 ##           Sep      Oct      Nov      Dec
 ## 1979 295.8673 289.4151 273.2532 283.6455
 ## 1980</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="第五章作业.html#cb250-1" tabindex="-1"></a><span class="co"># 绘制原始数据和预测结果的图形</span></span>
-<span id="cb250-2"><a href="第五章作业.html#cb250-2" tabindex="-1"></a><span class="fu">plot</span>(birth, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;时间&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;出生率&quot;</span>, <span class="at">main =</span> <span class="st">&quot;birth&quot;</span>)</span>
-<span id="cb250-3"><a href="第五章作业.html#cb250-3" tabindex="-1"></a><span class="fu">lines</span>(birth_forecast<span class="sc">$</span>pred, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb250-4"><a href="第五章作业.html#cb250-4" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;原始数据&quot;</span>, <span class="st">&quot;预测结果&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 </div>
 <div id="强生公司收益率" class="section level2 hasAnchor" number="5.12">
 <h2><span class="header-section-number">5.12</span> 5.12 强生公司收益率<a href="第五章作业.html#强生公司收益率" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="第五章作业.html#cb251-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">log</span>(jj))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="第五章作业.html#cb252-1" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">diff</span>(<span class="fu">log</span>(jj)))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-110-2.png" width="672" /></p>
+<p>绘制时间序列的时序图，由于数据具有趋势性，考虑进行一次差分，差分后数据不再具有明显的趋势性。
+<img src="_main_files/figure-html/unnamed-chunk-110-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-110-2.png" width="672" /></p>
 <p>其次确定模型阶数：</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="第五章作业.html#cb253-1" tabindex="-1"></a><span class="fu">auto.arima</span>(<span class="fu">log</span>(jj))</span></code></pre></div>
 <pre><code>## Series: log(jj) 
 ## ARIMA(2,0,0)(1,1,0)[4] with drift 
 ## 
@@ -1799,7 +1658,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## sigma^2 = 0.007793:  log likelihood = 82.47
 ## AIC=-154.95   AICc=-154.14   BIC=-143.04</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="第五章作业.html#cb255-1" tabindex="-1"></a><span class="fu">acf2</span>(<span class="fu">diff</span>(<span class="fu">log</span>(jj)))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <pre><code>##       [,1]  [,2] [,3] [,4]  [,5]  [,6]  [,7] [,8]  [,9] [,10] [,11] [,12] [,13]
 ## ACF  -0.51  0.07 -0.4 0.73 -0.37  0.00 -0.25 0.56 -0.28 -0.01 -0.22  0.45 -0.21
@@ -1808,7 +1666,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ACF  -0.04 -0.15  0.35 -0.14 -0.08 -0.09  0.27
 ## PACF -0.08 -0.04 -0.04 -0.04 -0.06 -0.02  0.01</code></pre>
 <p>根据ACF、PACF的绘图结果，以及函数<code>auto.arima</code>得到的结果，可以选择模型为SARIMA(2,2,0,1,1,0)[4]，因此可以拟合模型并进行检验：</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="第五章作业.html#cb257-1" tabindex="-1"></a><span class="fu">sarima</span>(<span class="fu">log</span>(jj),<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## initial  value -2.405347 
 ## iter   2 value -2.484501
 ## iter   3 value -2.497205
@@ -1865,21 +1722,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $BIC
 ## [1] -1.787979</code></pre>
 <p>利用拟合的季节性ARIMA模型预测未来4个季度的收益率，并绘制在图中：</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="第五章作业.html#cb260-1" tabindex="-1"></a><span class="co"># 拟合ARIMA模型</span></span>
-<span id="cb260-2"><a href="第五章作业.html#cb260-2" tabindex="-1"></a>logjj_model <span class="ot">&lt;-</span> <span class="fu">arima</span>(<span class="fu">log</span>(jj), <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>),</span>
-<span id="cb260-3"><a href="第五章作业.html#cb260-3" tabindex="-1"></a>                       <span class="at">seasonal =</span> <span class="fu">list</span>(<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="at">period =</span> <span class="dv">4</span>))</span>
-<span id="cb260-4"><a href="第五章作业.html#cb260-4" tabindex="-1"></a></span>
-<span id="cb260-5"><a href="第五章作业.html#cb260-5" tabindex="-1"></a><span class="co"># 对未来12个月进行预测</span></span>
-<span id="cb260-6"><a href="第五章作业.html#cb260-6" tabindex="-1"></a>logjj_forecast <span class="ot">&lt;-</span> <span class="fu">predict</span>(logjj_model, <span class="at">n.ahead =</span> <span class="dv">4</span>)</span>
-<span id="cb260-7"><a href="第五章作业.html#cb260-7" tabindex="-1"></a></span>
-<span id="cb260-8"><a href="第五章作业.html#cb260-8" tabindex="-1"></a><span class="co"># 打印预测结果</span></span>
-<span id="cb260-9"><a href="第五章作业.html#cb260-9" tabindex="-1"></a><span class="fu">print</span>(logjj_forecast<span class="sc">$</span>pred)</span></code></pre></div>
 <pre><code>##          Qtr1     Qtr2     Qtr3     Qtr4
 ## 1981 2.900503 2.830641 2.933700 2.600540</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="第五章作业.html#cb262-1" tabindex="-1"></a><span class="co"># 绘制原始数据和预测结果的图形</span></span>
-<span id="cb262-2"><a href="第五章作业.html#cb262-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(jj), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;时间&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;收益率&quot;</span>, <span class="at">main =</span> <span class="st">&quot;jj&quot;</span>)</span>
-<span id="cb262-3"><a href="第五章作业.html#cb262-3" tabindex="-1"></a><span class="fu">lines</span>(logjj_forecast<span class="sc">$</span>pred, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb262-4"><a href="第五章作业.html#cb262-4" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;原始数据&quot;</span>, <span class="st">&quot;预测结果&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 
 </div>
