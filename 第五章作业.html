@@ -29,7 +29,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="思想先进的猫猫" />
 
 
-<meta name="date" content="2023-05-30" />
+<meta name="date" content="2023-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A 思想先进的猫猫</a></li>
+<li><a href="./">思想先进的猫猫</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
@@ -338,14 +338,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb145-15"><a href="第五章作业.html#cb145-15" tabindex="-1"></a>  <span class="at">x75 =</span> x75_fit</span>
 <span id="cb145-16"><a href="第五章作业.html#cb145-16" tabindex="-1"></a>)</span>
 <span id="cb145-17"><a href="第五章作业.html#cb145-17" tabindex="-1"></a></span>
-<span id="cb145-18"><a href="第五章作业.html#cb145-18" tabindex="-1"></a></span>
-<span id="cb145-19"><a href="第五章作业.html#cb145-19" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb145-20"><a href="第五章作业.html#cb145-20" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb145-21"><a href="第五章作业.html#cb145-21" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">color =</span> <span class="st">&quot;Original Data&quot;</span> ))<span class="sc">+</span></span>
-<span id="cb145-22"><a href="第五章作业.html#cb145-22" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x25, <span class="at">color =</span> <span class="st">&quot;0.25&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-23"><a href="第五章作业.html#cb145-23" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x50, <span class="at">color =</span> <span class="st">&quot;0.50&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-24"><a href="第五章作业.html#cb145-24" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x75, <span class="at">color =</span> <span class="st">&quot;0.75&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
-<span id="cb145-25"><a href="第五章作业.html#cb145-25" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">ylab =</span> <span class="st">&quot;log(varve)&quot;</span>) </span></code></pre></div>
+<span id="cb145-18"><a href="第五章作业.html#cb145-18" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb145-19"><a href="第五章作业.html#cb145-19" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb145-20"><a href="第五章作业.html#cb145-20" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">color =</span> <span class="st">&quot;Original Data&quot;</span> ))<span class="sc">+</span></span>
+<span id="cb145-21"><a href="第五章作业.html#cb145-21" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x25, <span class="at">color =</span> <span class="st">&quot;0.25&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
+<span id="cb145-22"><a href="第五章作业.html#cb145-22" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x50, <span class="at">color =</span> <span class="st">&quot;0.50&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
+<span id="cb145-23"><a href="第五章作业.html#cb145-23" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x75, <span class="at">color =</span> <span class="st">&quot;0.75&quot;</span>), <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="sc">+</span></span>
+<span id="cb145-24"><a href="第五章作业.html#cb145-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">ylab =</span> <span class="st">&quot;log(varve)&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 </div>
 <div id="美国gdp序列分析" class="section level2 hasAnchor" number="5.2">
@@ -769,6 +768,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $BIC
 ## [1] 4.744329</code></pre>
+<ul>
+<li>从Ljung-Box统计量的检验结果来看，这三种模型的差别不大。然而尽管对于差分过后的数据来说，ARMA(1,1), ARMA(0,3)已经是合适的模型，但是仍然存在一些较大的差异值。</li>
+</ul>
 </div>
 <div id="陆地温度数据" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 5.4 陆地温度数据<a href="第五章作业.html#陆地温度数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
